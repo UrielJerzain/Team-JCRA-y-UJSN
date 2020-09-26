@@ -3,6 +3,7 @@ main
 {
     printf("My name is UJ");
     printf("My name is JC");
-    printf("My name is Jerzain");
+    printf("My name is JC");   
+    printf("My name is UJ");
     printf("Arriba el Atlas");
 }
