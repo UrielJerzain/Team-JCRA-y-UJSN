@@ -5,5 +5,4 @@ main
     printf("My name is JC");
     printf("My name is JC");   
     printf("My name is UJ");
-    printf("Arriba el Atlas");
 }
