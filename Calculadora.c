@@ -6,8 +6,12 @@ typedef unsigned char uint32;
 
 void main ( void )
 {
-	uint32 u32Variable=0
-	uint32 u32SOV=0
-	uint32 u32Opciones=0
-	uint32 u32Correr=0
+	uint32 u32Variable=0;
+	uint32 u32SOV=0;
+	uint32 u32Opciones=0;
+	uint32 u32Correr=0;
+	
+	printf("De cuantos bits seria tu variable?");
+	scanf("%d",&u32SOV);
+	
 }
