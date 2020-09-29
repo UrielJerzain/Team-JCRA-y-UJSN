@@ -14,7 +14,7 @@ void main ( void )
 	
 	printf("De cuantos bits seria tu variable?");
 	scanf("%d",&u32SOV);
-	if(u32SOV == 8 || u32SOV == 16 || u32SOV == 32);
+	if(u32SOV == 8 || u32SOV == 16 || u32SOV == 32)
 	{
 		while (u8Condicion == 1)
 		{
@@ -22,7 +22,7 @@ void main ( void )
 			printf("2:Operacion OR\n");
 			printf("3:Operacion XOR\n");	
 			scanf("%d",&u32Opciones);
-			if(u32Opciones>=1 && u32Opciones<=3);
+			if(u32Opciones>=1 && u32Opciones<=3)
 			{
 				printf("Corrimiento para la operaciones");
 				scanf("%d",&u32Correr);
@@ -48,6 +48,7 @@ void main ( void )
 			}
 			else
 				(u8Condicion == 1);
+			printf("Favor de seleccionar un número dentro de las opciones");
 		}
 	}
 	
