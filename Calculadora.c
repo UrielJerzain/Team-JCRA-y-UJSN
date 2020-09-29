@@ -13,5 +13,6 @@ void main ( void )
 	
 	printf("De cuantos bits seria tu variable?");
 	scanf("%d",&u32SOV);
+	if(u32SOV == 8 || u32SOV == 16 || u32SOV == 32);
 	
 }
