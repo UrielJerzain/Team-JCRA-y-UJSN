@@ -1,5 +1,5 @@
-#include "stdio.h"
-#include "GENFUN.h"
+#include <stdio.h>
+#include <GENFUN.h>
 
 void main (void)
 {
@@ -26,7 +26,7 @@ void main (void)
 	printf("The average of the array is: %d\n", u8Average);
 }
 
-void GENFUN_vCapsOn (uint8 *pu8Src, uint8 u8SizeOfList)
+void GENFUN_vCpasOn (uint8 *pu8Src, uint8 u8SizeOfList)
 {
 	while ( u8SizeOfList != 0 )
 	 {
