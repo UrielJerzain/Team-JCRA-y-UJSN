@@ -1,6 +1,7 @@
 #include "stdio.h"
 #include "GENFUN.h"
 #include <time.h>
+#include <stdlib.h>
 
 void main (void)
 {
@@ -17,6 +18,7 @@ void main (void)
 	uint8 u8MinVal;
 	uint8 u8MaxVal;
 	uint8 u8i;
+	srand(time(0));
 
 	/*CapsOn*/
 	printf("First function CapsOn \n");
@@ -25,20 +27,20 @@ void main (void)
 	printf("Array after CapsOn: %s\n", au8TestArray);
 
 	/*CapsOff*/
-	printf("Second function CapsOff \n");
+	printf("\n\n\nSecond function CapsOff \n");
 	printf("Array before CapsOff: %s\n", au8TestArray);
 	GENFUN_vCapsOff (&au8TestArray[0], 12);
 	printf("Array after CapsOff: %s\n", au8TestArray);
 
 	/*GetOccurence*/
-	printf("Third function GetOccurence \n");
+	printf("\n\n\nThird function GetOccurence \n");
 	printf("Type in the letter you are looking for\n");
-	scanf("%c", &u8Target);
+	gets(&u8Target);
 	u8Repetition = GENFUN_u8GetOccurence (&au8TestArray[0], u8Target,12);
 	printf("The amount of times that the letter %c was found in the array: %d\n", u8Target, u8Repetition);
 
 	/*GetAverage*/
-	printf("Fourth function GetAverage \nThe array is:\n");
+	printf("\n\n\nFourth function GetAverage \nThe array is:\n");
 	for(u8i=0;u8i<10;u8i++)
 	{
 		printf("%d ", au8Test2Array[u8i]);
@@ -47,20 +49,16 @@ void main (void)
 	printf("\nThe average of the array is: %d\n", u8Average);
 
 	/*MemSet*/
-	printf("Fifth function MemSet \n");
-	printf("Type the  letter in ASCII code (from 97 to 122) that you want to fill the array with \n");
-	scanf("%d", &u8Char2Set);
-	while (u8Char2Set <= ACII_LOW_THRESHOLD_OFF_ON || u8Char2Set >= ACII_HIGH_THRESHOLD_OFF_ON )
-	{
-	printf("Please type in a correct number (from 97 to 122): \n");
-	scanf("%d", &u8Char2Set);
-	}
-	printf("Array before MemSet: %s\n", au8TestArray);
+	printf("\n\n\nFifth function MemSet \n");
+	printf("Original array: %s\n", au8TestArray);
+	printf("Type in a letter that you want to fill the array with \n");
+	scanf("%c", &u8Char2Set);
 	GENFUN_u8MemSet (&au8TestArray[0], u8Char2Set, 11);
 	printf("Array after MemSet: %s\n", au8TestArray);
+			
 
 	/*MemCopy*/
-	printf("Sixth function MemCopy \n");
+	printf("\n\n\nSixth function MemCopy \n");
 	printf("Backup array before MemCopy\n");
 	for(u8i=0;u8i<10;u8i++)
 	{
@@ -74,7 +72,7 @@ void main (void)
 	}
 
 	/*SortList*/
-	printf("\nSeventh function SortList \n");
+	printf("\n\n\n\nSeventh function SortList \n");
 	printf("Array before SortList\n");
 	for(u8i=0;u8i<10;u8i++)
 	{
@@ -88,7 +86,7 @@ void main (void)
 	}
 
 	/*SoftSignal*/
-	printf("\nEighth function SoftSignal \n");
+	printf("\n\n\n\nEighth function SoftSignal \n");
 	printf("Original array \n");
 	srand(time(0));
 	for(u8i=0;u8i<255;u8i++)
@@ -104,28 +102,17 @@ void main (void)
 	}
 
 	/*FilterSignal*/
-	printf("\nNinth function FilterSignal \n");
-	srand(time(0));
+	printf("\n\n\n\nNinth function FilterSignal \n");
 	printf("Original array \n");
 	for(u8i=0;u8i<255;u8i++)
 	{
 		au8Test5Array[u8i]=(rand()%101);
 		printf("%d ", au8Test5Array[u8i]);
 	}
-	printf("\nType in the Upper limit (from 60 to 100)\n");
-	scanf("%d", &u8MaxVal);
-	while (u8MaxVal < 60 || u8MaxVal > 100)
-	{
-	printf("Please type in a correct number (from 60 to 100):\n");
-	scanf("%d", &u8MaxVal);
-	}
-	printf("Type in the Lower limit (from 1 to 40)\n");
-	scanf("%d", &u8MinVal);
-	while (u8MinVal < 1 || u8MinVal > 40)
-	{
-	printf("Please type in a correct number (from 1 to 40):\n");
-	scanf("%d", &u8MinVal);
-	}
+	printf("\nThe Upper limit is: 70\n");
+	u8MaxVal=70;
+	printf("The Lower limit is: 30\n");
+	u8MinVal=30;
 	GENFUN_vFilterSignal(&au8Test5Array[0], &au8Test6Array[0], u8MaxVal, u8MinVal);
 	printf("Array after SoftFilter\n");
 	for(u8i=0;u8i<255;u8i++)
