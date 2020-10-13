@@ -3,6 +3,8 @@
 #include <time.h>
 #include <stdlib.h>
 
+
+/*Nota 85*/
 void main (void)
 {
 	uint8 au8TestArray[12] = "hello world";
@@ -182,7 +184,7 @@ uint8 GENFUN_u8GetAverage (uint8 *pu8Src, uint8 u8SizeOfList)
 	u8ListSize = u8SizeOfList;
 	while ( u8SizeOfList != 0 )
 	{
-		u8Summatory += *pu8Src;
+		u8Summatory += *pu8Src;		/*Overflow*/
 	    pu8Src++;
 	    u8SizeOfList--;
 	}
@@ -215,7 +217,7 @@ void GENFUN_vSortList (uint8 *pu8Src, uint8 *pu8Dest, uint8 u8SizeOfList)
 {
 	uint8 i;
 	uint8 j;
-	uint8 u8aux;
+	uint8 u8aux;						/*Manejaste apuntadores como arreglos*/
 	for (i=0;i< u8SizeOfList -1;i++)
 	{
 		for(j=i+1;j< u8SizeOfList;j++)
@@ -244,7 +246,7 @@ void GENFUN_vSortList (uint8 *pu8Src, uint8 *pu8Dest, uint8 u8SizeOfList)
 void GENFUN_vSoftSignal (uint8 *pu8Src, uint8 *pu8Dest)
 {
 	uint8 u8Summatory = 0;
-	uint8 u8Average = 0;
+	uint8 u8Average = 0;				/*Manejaste apuntadores como arreglos*/
 	uint8 i;
 	uint8 j;
 	for (i=0;i< 255;i++)
@@ -262,7 +264,7 @@ void GENFUN_vSoftSignal (uint8 *pu8Src, uint8 *pu8Dest)
 void GENFUN_vFilterSignal (uint8 *pu8Src, uint8 *pu8Dest, uint8 u8MaxVal, uint8 u8MinVal)
 {
 	uint8 i;
-	for (i=0;i< 255;i++)
+	for (i=0;i< 255;i++)		/*Manejaste apuntadores como arreglos*/
 	{
 		if(pu8Src[i] < u8MinVal)
 		{
