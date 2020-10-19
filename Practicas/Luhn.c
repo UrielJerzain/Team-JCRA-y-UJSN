@@ -12,7 +12,7 @@ void main (void)
 	}
 	else
 	{
-		printf("Your credit card number does not works.\nPlease try with another one");	
+		printf("Your credit card number does not work.\nPlease try with another one");	
 	}
 }
 
