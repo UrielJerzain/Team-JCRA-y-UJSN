@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
-#include "LuhnUriel.h"
+typedef unsigned char uint8;
+typedef unsigned short uint16;
+
+uint8 u8LuhnCheck ( uint8 *pu8Data, uint8 u8Sol);
 void main (void)
 {
 	uint8 au8CardNumber[16] = {4,1,6,8,8,1,8,8,4,4,4,4,7,1,1,0};
