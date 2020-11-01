@@ -2,23 +2,24 @@ typedef unsigned char uint8;
 typedef unsigned short uint16;
 typedef unsigned int uint32;
 
-typedef struct
+typedef enum
 {
-uint8 enColumn0;
-uint8 enColumn1;
-uint8 enColumn2;
-uint8 enColumn3;
-uint8 enColumn4;
-uint8 enColumn5;
-uint8 enColumn6;
-uint8 enColumn7;
-uint8 enColumn8;
-uint8 enColumn9;
-uint8 enColumn10;
-uint8 enColumn11;
-uint8 enColumn12;
-uint8 enColumn13;
-uint8 enColumn14;
+enColumn0,
+enColumn1,
+enColumn2,
+enColumn3,
+enColumn4,
+enColumn5,
+enColumn6,
+enColumn7,
+enColumn8,
+enColumn9,
+enColumn10,
+enColumn11,
+enColumn12,
+enColumn13,
+enColumn14,
+enMaxColumns
 }tstMines;
 
 typedef enum
@@ -43,9 +44,12 @@ typedef enum
 
 
 #define AT_SIGN_CODE        64
+#define HASHTAG_SIGN_CODE   35
+#define ZERO_CODE           48
 #define EASY		        10
 #define MEDIUM      		20
 #define HARD         		30
+#define GOD         		60
 
 #define INIT_MAP		\
 {								\
@@ -66,7 +70,30 @@ typedef enum
 	{35,35,35,35,35,35,35,35,35,35,35,35,35,35,35},					\
 }
 
+#define INIT_BOMB		\
+{								\
+	{48,48,48,48,48,48,48,48,48,48,48,48,48,48,48},					\
+	{48,48,48,48,48,48,48,48,48,48,48,48,48,48,48},					\
+	{48,48,48,48,48,48,48,48,48,48,48,48,48,48,48},					\
+	{48,48,48,48,48,48,48,48,48,48,48,48,48,48,48},					\
+	{48,48,48,48,48,48,48,48,48,48,48,48,48,48,48},					\
+	{48,48,48,48,48,48,48,48,48,48,48,48,48,48,48},					\
+	{48,48,48,48,48,48,48,48,48,48,48,48,48,48,48},					\
+	{48,48,48,48,48,48,48,48,48,48,48,48,48,48,48},					\
+	{48,48,48,48,48,48,48,48,48,48,48,48,48,48,48},					\
+	{48,48,48,48,48,48,48,48,48,48,48,48,48,48,48},					\
+	{48,48,48,48,48,48,48,48,48,48,48,48,48,48,48},					\
+	{48,48,48,48,48,48,48,48,48,48,48,48,48,48,48},					\
+	{48,48,48,48,48,48,48,48,48,48,48,48,48,48,48},					\
+	{48,48,48,48,48,48,48,48,48,48,48,48,48,48,48},					\
+	{48,48,48,48,48,48,48,48,48,48,48,48,48,48,48},					\
+}
+
 void PrintGameBoard ();
 void BombsPlacement (uint8 u8Difficulty);
-void Mines();
 void Numbers(uint8 u8Row, uint8 u8Column);
+void Repetition();
+void Game(uint8 u8Difficulty);
+uint8 Row();
+uint8 Column();
+
