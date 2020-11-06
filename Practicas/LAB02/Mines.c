@@ -45,7 +45,9 @@ void main(void)
 	}
 	else
 	{
-		/*Nothing to do*/
+		fflush(stdin);
+		printf("Type in a correct number\n\n");
+		main();
 	}	
 }
 
