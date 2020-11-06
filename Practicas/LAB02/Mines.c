@@ -5,6 +5,7 @@
 
 tstMines stMineSweeper[enMaxRows][enMaxColumns] = INIT_MAP;
 tstMines stMineSweeper2[enMaxRows][enMaxColumns] = INIT_BOMB;
+tstMines stMineSweeper3[enMaxRows][enMaxColumns] = INIT_BOMB;
 
 void main(void)
 {
@@ -354,7 +355,14 @@ void Game(uint8 u8Difficulty)
 		if(stMineSweeper2[u8Row][u8Column]!=AT_ASCII)
 		{
 			stMineSweeper[u8Row][u8Column]=stMineSweeper2[u8Row][u8Column];
-			Reveal(u8Row, u8Column);
+			if(stMineSweeper[u8Row][u8Column] == ZERO_ASCII)
+			{
+				Reveal(u8Row, u8Column);
+			}
+			else
+			{
+				/*Nothing to do*/
+			}
 			PrintGameBoard();
 			for(i=ROW_BORDER1;i<=ROW_BORDER2;i++)
 			{
@@ -469,7 +477,91 @@ uint8 Column()
 
 void Reveal(uint8 u8Row, uint8 u8Column)
 {
-	uint8 Var= FACTOR;
+	stMineSweeper[u8Row][u8Column] = ZERO_ASCII;
+	stMineSweeper3[u8Row][u8Column] = FACTOR;
+	if(stMineSweeper2[u8Row][u8Column-YFACTOR] == ZERO_ASCII && stMineSweeper3[u8Row][u8Column-YFACTOR] != FACTOR)
+	{
+		Reveal(u8Row,u8Column-YFACTOR);
+	}
+	else
+	{
+		stMineSweeper[u8Row][u8Column-YFACTOR] = stMineSweeper2[u8Row][u8Column-YFACTOR];
+	}
+
+
+	if(stMineSweeper2[u8Row][u8Column+YFACTOR] == ZERO_ASCII && stMineSweeper3[u8Row][u8Column+YFACTOR] != FACTOR)
+	{
+		Reveal(u8Row,u8Column+YFACTOR);
+	}
+	else
+	{
+		stMineSweeper[u8Row][u8Column+YFACTOR] = stMineSweeper2[u8Row][u8Column+YFACTOR];
+	}
+
+
+	if(stMineSweeper2[u8Row+XFACTOR][u8Column-YFACTOR] == ZERO_ASCII && stMineSweeper3[u8Row+XFACTOR][u8Column-YFACTOR] != FACTOR)
+	{
+		Reveal(u8Row+XFACTOR,u8Column-YFACTOR);
+	}
+	else
+	{
+		stMineSweeper[u8Row+XFACTOR][u8Column-YFACTOR] = stMineSweeper2[u8Row+XFACTOR][u8Column-YFACTOR];
+	}
+
+
+	if(stMineSweeper2[u8Row-XFACTOR][u8Column-YFACTOR] == ZERO_ASCII && stMineSweeper3[u8Row-XFACTOR][u8Column-YFACTOR] != FACTOR)
+	{
+		Reveal(u8Row-XFACTOR,u8Column-YFACTOR);
+	}
+	else
+	{
+		stMineSweeper[u8Row-XFACTOR][u8Column-YFACTOR] = stMineSweeper2[u8Row-XFACTOR][u8Column-YFACTOR];
+	}
+
+
+	if(stMineSweeper2[u8Row+XFACTOR][u8Column+YFACTOR] == ZERO_ASCII && stMineSweeper3[u8Row+XFACTOR][u8Column+YFACTOR] != FACTOR)
+	{
+		Reveal(u8Row+XFACTOR,u8Column+YFACTOR);
+	}
+	else
+	{
+		stMineSweeper[u8Row+XFACTOR][u8Column+YFACTOR] = stMineSweeper2[u8Row+XFACTOR][u8Column+YFACTOR];
+	}
+
+
+	if(stMineSweeper2[u8Row-XFACTOR][u8Column+YFACTOR] == ZERO_ASCII && stMineSweeper3[u8Row-XFACTOR][u8Column+YFACTOR] != FACTOR)
+	{
+		Reveal(u8Row,u8Column+YFACTOR);
+	}
+	else
+	{
+		stMineSweeper[u8Row-XFACTOR][u8Column+YFACTOR] = stMineSweeper2[u8Row-XFACTOR][u8Column+YFACTOR];
+	}
+
+	if(stMineSweeper2[u8Row+XFACTOR][u8Column] == ZERO_ASCII && stMineSweeper3[u8Row+XFACTOR][u8Column] != FACTOR)
+	{
+		Reveal(u8Row+XFACTOR,u8Column);
+	}
+	else
+	{
+		stMineSweeper[u8Row+XFACTOR][u8Column] = stMineSweeper2[u8Row+XFACTOR][u8Column];
+	}
+
+	if(stMineSweeper2[u8Row-XFACTOR][u8Column] == ZERO_ASCII && stMineSweeper3[u8Row-XFACTOR][u8Column] != FACTOR)
+	{
+		Reveal(u8Row-XFACTOR,u8Column);
+	}
+	else
+	{
+		stMineSweeper[u8Row-XFACTOR][u8Column] = stMineSweeper2[u8Row-XFACTOR][u8Column];
+	}
+
+}
+
+
+
+
+uint8 Var= FACTOR;
 	uint8 LeftBorder= u8Column - FACTOR;
 	uint8 RightBorder= u8Column + FACTOR;
 	uint8 TopBorder= u8Row - FACTOR;
@@ -496,4 +588,3 @@ void Reveal(uint8 u8Row, uint8 u8Column)
 			stMineSweeper[LowBorder][RightBorder] = stMineSweeper2[LowBorder][RightBorder];	
 		}
 	}
-}
