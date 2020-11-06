@@ -102,8 +102,8 @@ void Repetition()
 	uint8 u8Row=0;
 	uint8 u8Column=0;
 	uint8 x;
-	u8Row=rand()%SIZE2;
-	u8Column=rand()%SIZE2;
+	u8Row= FACTOR + rand()%SIZE2;
+	u8Column= FACTOR + rand()%SIZE2;
 	x=FACTOR;
 	while(x==FACTOR)
 	{
@@ -115,229 +115,46 @@ void Repetition()
 		}
 		else
 		{
-			u8Row=rand()%SIZE2;
-			u8Column=rand()%SIZE2;
+			u8Row= FACTOR + rand()%SIZE2;
+			u8Column= FACTOR + rand()%SIZE2;
 		}
 	}
 }
 
 void Numbers(uint8 u8Row, uint8 u8Column)
 {
-	if(u8Row==ROW_BORDER1 && u8Column==COLUMN_BORDER1)
-	{
-		if(stMineSweeper2[u8Row][u8Column+YFACTOR] != AT_ASCII)
-		{
-			stMineSweeper2[u8Row][u8Column+YFACTOR] += FACTOR;
-		}
-		if(stMineSweeper2[u8Row+XFACTOR][u8Column+YFACTOR] != AT_ASCII)
-		{
-			stMineSweeper2[u8Row+XFACTOR][u8Column+YFACTOR] += FACTOR;
-		}
-		if(stMineSweeper2[u8Row+XFACTOR][u8Column] !=AT_ASCII)
-		{
-			stMineSweeper2[u8Row+XFACTOR][u8Column] += FACTOR;
-		}
-	}
-	else if(u8Row==ROW_BORDER1 && u8Column==COLUMN_BORDER2)
-	{
-		if(stMineSweeper2[u8Row][u8Column-YFACTOR] != AT_ASCII)
+		if(stMineSweeper2[u8Row][u8Column-YFACTOR] != AT_ASCII && stMineSweeper2[u8Row][u8Column-YFACTOR] != BORDER2_ASCII)
 		{
 			stMineSweeper2[u8Row][u8Column-YFACTOR] += FACTOR;
 		}
-		if(stMineSweeper2[u8Row+XFACTOR][u8Column-YFACTOR] != AT_ASCII)
-		{
-			stMineSweeper2[u8Row+XFACTOR][u8Column-YFACTOR] += FACTOR;
-		}
-		if(stMineSweeper2[u8Row+XFACTOR][u8Column] !=AT_ASCII)
-		{
-			stMineSweeper2[u8Row+XFACTOR][u8Column] += FACTOR;
-		}
-	}
-	else if(u8Row==ROW_BORDER2 && u8Column==COLUMN_BORDER1)
-	{
-		if(stMineSweeper2[u8Row][u8Column+YFACTOR] != AT_ASCII)
-		{
-			stMineSweeper2[u8Row][u8Column+YFACTOR] += FACTOR;
-		}
-		if(stMineSweeper2[u8Row-XFACTOR][u8Column+YFACTOR] != AT_ASCII)
-		{
-			stMineSweeper2[u8Row-XFACTOR][u8Column+YFACTOR] += FACTOR;
-		}
-		if(stMineSweeper2[u8Row-XFACTOR][u8Column] !=AT_ASCII)
-		{
-			stMineSweeper2[u8Row-XFACTOR][u8Column] += FACTOR;
-		}
-	}
-	else if(u8Row==ROW_BORDER2 && u8Column==COLUMN_BORDER2)
-	{
-		if(stMineSweeper2[u8Row][u8Column-YFACTOR] != AT_ASCII)
-		{
-			stMineSweeper2[u8Row][u8Column-YFACTOR] += FACTOR;
-		}
-		if(stMineSweeper2[u8Row-XFACTOR][u8Column-YFACTOR] != AT_ASCII)
+		if(stMineSweeper2[u8Row-XFACTOR][u8Column-YFACTOR] != AT_ASCII && stMineSweeper2[u8Row-XFACTOR][u8Column-YFACTOR] != CORNER1_ASCII && stMineSweeper2[u8Row-XFACTOR][u8Column-YFACTOR] != BORDER1_ASCII && stMineSweeper2[u8Row-XFACTOR][u8Column-YFACTOR] != BORDER2_ASCII)
 		{
 			stMineSweeper2[u8Row-XFACTOR][u8Column-YFACTOR] += FACTOR;
 		}
-		if(stMineSweeper2[u8Row-XFACTOR][u8Column] !=AT_ASCII)
+		if(stMineSweeper2[u8Row-XFACTOR][u8Column] != AT_ASCII && stMineSweeper2[u8Row-XFACTOR][u8Column] != BORDER1_ASCII)
 		{
 			stMineSweeper2[u8Row-XFACTOR][u8Column] += FACTOR;
 		}
-	}
-	else if(u8Row==ROW_BORDER1)
-	{
-		if(u8Column!=COLUMN_BORDER1 && u8Column!=COLUMN_BORDER2)
-		{
-			if(stMineSweeper2[u8Row][u8Column-YFACTOR] != AT_ASCII)
-			{
-				stMineSweeper2[u8Row][u8Column-YFACTOR] += FACTOR;
-			}
-			if(stMineSweeper2[u8Row+XFACTOR][u8Column-YFACTOR] != AT_ASCII)
-			{
-				stMineSweeper2[u8Row+XFACTOR][u8Column-YFACTOR] += FACTOR;
-			}
-			if(stMineSweeper2[u8Row+XFACTOR][u8Column] !=AT_ASCII)
-			{
-			stMineSweeper2[u8Row+XFACTOR][u8Column] += FACTOR;
-			}
-			if(stMineSweeper2[u8Row+XFACTOR][u8Column+YFACTOR] != AT_ASCII)
-			{
-				stMineSweeper2[u8Row+XFACTOR][u8Column+YFACTOR] += FACTOR;
-			}
-			if(stMineSweeper2[u8Row][u8Column+YFACTOR] !=AT_ASCII)
-			{
-			stMineSweeper2[u8Row][u8Column+YFACTOR] += FACTOR;
-			}
-		}
-		else
-		{
-			/*Nothing to do*/
-		}	
-	}
-	else if(u8Row==ROW_BORDER2)
-	{
-		if(u8Column!=COLUMN_BORDER1 && u8Column!=COLUMN_BORDER2)
-		{
-			if(stMineSweeper2[u8Row][u8Column-YFACTOR] != AT_ASCII)
-			{
-				stMineSweeper2[u8Row][u8Column-YFACTOR] += FACTOR;
-			}
-			if(stMineSweeper2[u8Row-XFACTOR][u8Column-YFACTOR] != AT_ASCII)
-			{
-				stMineSweeper2[u8Row-XFACTOR][u8Column-YFACTOR] += FACTOR;
-			}
-			if(stMineSweeper2[u8Row-XFACTOR][u8Column] !=AT_ASCII)
-			{
-			stMineSweeper2[u8Row-XFACTOR][u8Column] += FACTOR;
-			}
-			if(stMineSweeper2[u8Row-XFACTOR][u8Column+YFACTOR] != AT_ASCII)
-			{
-				stMineSweeper2[u8Row-XFACTOR][u8Column+YFACTOR] += FACTOR;
-			}
-			if(stMineSweeper2[u8Row][u8Column+YFACTOR] !=AT_ASCII)
-			{
-			stMineSweeper2[u8Row][u8Column+YFACTOR] += FACTOR;
-			}
-		}
-		else
-		{
-			/*Nothing to do*/
-		}	
-	}
-	else if(u8Column==COLUMN_BORDER1)
-	{
-		if(u8Row!=ROW_BORDER1 && u8Row!=ROW_BORDER2)
-		{
-			if(stMineSweeper2[u8Row][u8Column+YFACTOR] != AT_ASCII)
-			{
-				stMineSweeper2[u8Row][u8Column+YFACTOR] += FACTOR;
-			}
-			if(stMineSweeper2[u8Row-XFACTOR][u8Column+YFACTOR] != AT_ASCII)
-			{
-				stMineSweeper2[u8Row-XFACTOR][u8Column+YFACTOR] += FACTOR;
-			}
-			if(stMineSweeper2[u8Row-XFACTOR][u8Column] !=AT_ASCII)
-			{
-			stMineSweeper2[u8Row-XFACTOR][u8Column] += FACTOR;
-			}
-			if(stMineSweeper2[u8Row+XFACTOR][u8Column+YFACTOR] != AT_ASCII)
-			{
-				stMineSweeper2[u8Row+XFACTOR][u8Column+YFACTOR] += FACTOR;
-			}
-			if(stMineSweeper2[u8Row+XFACTOR][u8Column] !=AT_ASCII)
-			{
-			stMineSweeper2[u8Row+XFACTOR][u8Column] += FACTOR;
-			}
-		}
-		else
-		{
-			/*Nothing to do*/
-		}	
-	}
-	else if(u8Column==COLUMN_BORDER2)
-	{
-		if(u8Row!=ROW_BORDER1 && u8Row!=ROW_BORDER2)
-		{
-			if(stMineSweeper2[u8Row][u8Column-YFACTOR] != AT_ASCII)
-			{
-				stMineSweeper2[u8Row][u8Column-YFACTOR] += FACTOR;
-			}
-			if(stMineSweeper2[u8Row-XFACTOR][u8Column-YFACTOR] != AT_ASCII)
-			{
-				stMineSweeper2[u8Row-XFACTOR][u8Column-YFACTOR] += FACTOR;
-			}
-			if(stMineSweeper2[u8Row-XFACTOR][u8Column] !=AT_ASCII)
-			{
-			stMineSweeper2[u8Row-XFACTOR][u8Column] += FACTOR;
-			}
-			if(stMineSweeper2[u8Row+XFACTOR][u8Column-YFACTOR] != AT_ASCII)
-			{
-				stMineSweeper2[u8Row+XFACTOR][u8Column-YFACTOR] += FACTOR;
-			}
-			if(stMineSweeper2[u8Row+XFACTOR][u8Column] !=AT_ASCII)
-			{
-			stMineSweeper2[u8Row+XFACTOR][u8Column] += FACTOR;
-			}
-		}
-		else
-		{
-			/*Nothing to do*/
-		}	
-	}
-	else
-	{
-		if(stMineSweeper2[u8Row][u8Column-YFACTOR] != AT_ASCII)
-		{
-			stMineSweeper2[u8Row][u8Column-YFACTOR] += FACTOR;
-		}
-		if(stMineSweeper2[u8Row-XFACTOR][u8Column-YFACTOR] != AT_ASCII)
-		{
-			stMineSweeper2[u8Row-XFACTOR][u8Column-YFACTOR] += FACTOR;
-		}
-		if(stMineSweeper2[u8Row-XFACTOR][u8Column] !=AT_ASCII)
-		{
-			stMineSweeper2[u8Row-XFACTOR][u8Column] += FACTOR;
-		}
-		if(stMineSweeper2[u8Row+XFACTOR][u8Column-YFACTOR] != AT_ASCII)
+		if(stMineSweeper2[u8Row+XFACTOR][u8Column-YFACTOR] != AT_ASCII && stMineSweeper2[u8Row+XFACTOR][u8Column-YFACTOR] != CORNER3_ASCII && stMineSweeper2[u8Row+XFACTOR][u8Column-YFACTOR] != BORDER1_ASCII && stMineSweeper2[u8Row+XFACTOR][u8Column-YFACTOR] != BORDER2_ASCII)
 		{
 			stMineSweeper2[u8Row+XFACTOR][u8Column-YFACTOR] += FACTOR;
 		}
-		if(stMineSweeper2[u8Row+XFACTOR][u8Column] !=AT_ASCII)
+		if(stMineSweeper2[u8Row+XFACTOR][u8Column] != AT_ASCII && stMineSweeper2[u8Row+XFACTOR][u8Column] != BORDER1_ASCII)
 		{
 			stMineSweeper2[u8Row+XFACTOR][u8Column] += FACTOR;
 		}
-		if(stMineSweeper2[u8Row][u8Column+YFACTOR] != AT_ASCII)
+		if(stMineSweeper2[u8Row][u8Column+YFACTOR] != AT_ASCII && stMineSweeper2[u8Row][u8Column+YFACTOR] != BORDER2_ASCII)
 		{
 			stMineSweeper2[u8Row][u8Column+YFACTOR] += FACTOR;
 		}
-		if(stMineSweeper2[u8Row-XFACTOR][u8Column+YFACTOR] != AT_ASCII)
+		if(stMineSweeper2[u8Row-XFACTOR][u8Column+YFACTOR] != AT_ASCII && stMineSweeper2[u8Row-XFACTOR][u8Column+YFACTOR] != CORNER2_ASCII && stMineSweeper2[u8Row-XFACTOR][u8Column+YFACTOR] != BORDER1_ASCII && stMineSweeper2[u8Row-XFACTOR][u8Column+YFACTOR] != BORDER2_ASCII)
 		{
 			stMineSweeper2[u8Row-XFACTOR][u8Column+YFACTOR] += FACTOR;
 		}
-		if(stMineSweeper2[u8Row+XFACTOR][u8Column+YFACTOR] != AT_ASCII)
+		if(stMineSweeper2[u8Row+XFACTOR][u8Column+YFACTOR] != AT_ASCII && stMineSweeper2[u8Row+XFACTOR][u8Column+YFACTOR] != CORNER4_ASCII && stMineSweeper2[u8Row+XFACTOR][u8Column+YFACTOR] != BORDER1_ASCII && stMineSweeper2[u8Row+XFACTOR][u8Column+YFACTOR] != BORDER2_ASCII)
 		{
 			stMineSweeper2[u8Row+XFACTOR][u8Column+YFACTOR] += FACTOR;		
 		}
-	}
 }
 
 void Game(uint8 u8Difficulty)
@@ -350,8 +167,8 @@ void Game(uint8 u8Difficulty)
 	uint8 j;
 	while(x==FACTOR)
 	{
-		u8Row=Row()-XFACTOR;
-		u8Column=Column()-YFACTOR;
+		u8Row=Row();
+		u8Column=Column();
 		if(stMineSweeper2[u8Row][u8Column]!=AT_ASCII)
 		{
 			stMineSweeper[u8Row][u8Column]=stMineSweeper2[u8Row][u8Column];
@@ -452,7 +269,7 @@ uint8 Row()
 	uint8 x=0;
 	printf("Type in a row from 1 to 15\n");
 	scanf("%d",&x);
-	while (x<SIZE1 && x>SIZE2)
+	while (x<SIZE1 || x>SIZE2)
 	{
 		fflush(stdin);
 		printf("Type in a row from 1 to 15\n");
@@ -466,7 +283,7 @@ uint8 Column()
 	uint8 y=0;
 	printf("Type in a column from 1 to 15\n");
 	scanf("%d",&y);
-	while (y<SIZE1 && y>SIZE2)
+	while (y<SIZE1 || y>SIZE2)
 	{
 		fflush(stdin);
 		printf("Type in a column from 1 to 15\n");
@@ -479,6 +296,7 @@ void Reveal(uint8 u8Row, uint8 u8Column)
 {
 	stMineSweeper[u8Row][u8Column] = ZERO_ASCII;
 	stMineSweeper3[u8Row][u8Column] = FACTOR;
+
 	if(stMineSweeper2[u8Row][u8Column-YFACTOR] == ZERO_ASCII && stMineSweeper3[u8Row][u8Column-YFACTOR] != FACTOR)
 	{
 		Reveal(u8Row,u8Column-YFACTOR);
@@ -487,8 +305,6 @@ void Reveal(uint8 u8Row, uint8 u8Column)
 	{
 		stMineSweeper[u8Row][u8Column-YFACTOR] = stMineSweeper2[u8Row][u8Column-YFACTOR];
 	}
-
-
 	if(stMineSweeper2[u8Row][u8Column+YFACTOR] == ZERO_ASCII && stMineSweeper3[u8Row][u8Column+YFACTOR] != FACTOR)
 	{
 		Reveal(u8Row,u8Column+YFACTOR);
@@ -496,9 +312,7 @@ void Reveal(uint8 u8Row, uint8 u8Column)
 	else
 	{
 		stMineSweeper[u8Row][u8Column+YFACTOR] = stMineSweeper2[u8Row][u8Column+YFACTOR];
-	}
-
-
+	}	
 	if(stMineSweeper2[u8Row+XFACTOR][u8Column-YFACTOR] == ZERO_ASCII && stMineSweeper3[u8Row+XFACTOR][u8Column-YFACTOR] != FACTOR)
 	{
 		Reveal(u8Row+XFACTOR,u8Column-YFACTOR);
@@ -507,8 +321,6 @@ void Reveal(uint8 u8Row, uint8 u8Column)
 	{
 		stMineSweeper[u8Row+XFACTOR][u8Column-YFACTOR] = stMineSweeper2[u8Row+XFACTOR][u8Column-YFACTOR];
 	}
-
-
 	if(stMineSweeper2[u8Row-XFACTOR][u8Column-YFACTOR] == ZERO_ASCII && stMineSweeper3[u8Row-XFACTOR][u8Column-YFACTOR] != FACTOR)
 	{
 		Reveal(u8Row-XFACTOR,u8Column-YFACTOR);
@@ -517,8 +329,6 @@ void Reveal(uint8 u8Row, uint8 u8Column)
 	{
 		stMineSweeper[u8Row-XFACTOR][u8Column-YFACTOR] = stMineSweeper2[u8Row-XFACTOR][u8Column-YFACTOR];
 	}
-
-
 	if(stMineSweeper2[u8Row+XFACTOR][u8Column+YFACTOR] == ZERO_ASCII && stMineSweeper3[u8Row+XFACTOR][u8Column+YFACTOR] != FACTOR)
 	{
 		Reveal(u8Row+XFACTOR,u8Column+YFACTOR);
@@ -527,17 +337,14 @@ void Reveal(uint8 u8Row, uint8 u8Column)
 	{
 		stMineSweeper[u8Row+XFACTOR][u8Column+YFACTOR] = stMineSweeper2[u8Row+XFACTOR][u8Column+YFACTOR];
 	}
-
-
 	if(stMineSweeper2[u8Row-XFACTOR][u8Column+YFACTOR] == ZERO_ASCII && stMineSweeper3[u8Row-XFACTOR][u8Column+YFACTOR] != FACTOR)
 	{
-		Reveal(u8Row,u8Column+YFACTOR);
+		Reveal(u8Row-XFACTOR,u8Column+YFACTOR);
 	}
 	else
 	{
 		stMineSweeper[u8Row-XFACTOR][u8Column+YFACTOR] = stMineSweeper2[u8Row-XFACTOR][u8Column+YFACTOR];
 	}
-
 	if(stMineSweeper2[u8Row+XFACTOR][u8Column] == ZERO_ASCII && stMineSweeper3[u8Row+XFACTOR][u8Column] != FACTOR)
 	{
 		Reveal(u8Row+XFACTOR,u8Column);
@@ -546,7 +353,6 @@ void Reveal(uint8 u8Row, uint8 u8Column)
 	{
 		stMineSweeper[u8Row+XFACTOR][u8Column] = stMineSweeper2[u8Row+XFACTOR][u8Column];
 	}
-
 	if(stMineSweeper2[u8Row-XFACTOR][u8Column] == ZERO_ASCII && stMineSweeper3[u8Row-XFACTOR][u8Column] != FACTOR)
 	{
 		Reveal(u8Row-XFACTOR,u8Column);
@@ -555,36 +361,5 @@ void Reveal(uint8 u8Row, uint8 u8Column)
 	{
 		stMineSweeper[u8Row-XFACTOR][u8Column] = stMineSweeper2[u8Row-XFACTOR][u8Column];
 	}
-
 }
 
-
-
-
-uint8 Var= FACTOR;
-	uint8 LeftBorder= u8Column - FACTOR;
-	uint8 RightBorder= u8Column + FACTOR;
-	uint8 TopBorder= u8Row - FACTOR;
-	uint8 LowBorder= u8Row + FACTOR;
-	while(LeftBorder>COLUMN_BORDER1 && RightBorder<COLUMN_BORDER2 && TopBorder<ROW_BORDER1 && LowBorder>ROW_BORDER2)
-	{
-		if(stMineSweeper2[u8Row][u8Column]==ZERO_ASCII)
-		{
-			stMineSweeper[u8Row][LeftBorder] = stMineSweeper2[u8Row][LeftBorder];
-			while(stMineSweeper2[u8Row][LeftBorder]==ZERO_ASCII)
-			{
-				LeftBorder -= FACTOR;
-				stMineSweeper[TopBorder][LeftBorder] = stMineSweeper2[TopBorder][LeftBorder];
-				stMineSweeper[LowBorder][LeftBorder] = stMineSweeper2[LowBorder][LeftBorder];
-				stMineSweeper[u8Row][LeftBorder] = stMineSweeper2[u8Row][LeftBorder];
-			}
-			LeftBorder= u8Column - FACTOR;
-			stMineSweeper[TopBorder][LeftBorder] = stMineSweeper2[TopBorder][LeftBorder];
-			stMineSweeper[TopBorder][u8Column] = stMineSweeper2[TopBorder][u8Column];
-			stMineSweeper[LowBorder][LeftBorder] = stMineSweeper2[LowBorder][LeftBorder];
-			stMineSweeper[LowBorder][u8Column] = stMineSweeper2[LowBorder][u8Column];
-			stMineSweeper[u8Row][RightBorder] = stMineSweeper2[u8Row][RightBorder];
-			stMineSweeper[TopBorder][RightBorder] = stMineSweeper2[TopBorder][RightBorder];
-			stMineSweeper[LowBorder][RightBorder] = stMineSweeper2[LowBorder][RightBorder];	
-		}
-	}
