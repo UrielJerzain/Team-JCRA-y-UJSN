@@ -14,12 +14,12 @@ void main (void)
 		if(u8Options==RESTAURANT)
 		{
 			Restaurant();
-			x=0;
+			u8x=0;
 		}
 		else if(u8Options==DRIVE_THRU)
 		{
 			Drive_Thru();
-			x=0;
+			u8x=0;
 		}
 		else
 		{

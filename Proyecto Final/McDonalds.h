@@ -6,6 +6,7 @@ typedef unsigned int uint32;
 #define RESTAURANT 1
 #define DRIVE_THRU 2
 
+
 void Restaurant();
 void Drive_Thru();
 void delay(uint8 number_of_seconds);
