@@ -3,6 +3,7 @@
 #include "McDonalds.h"
 #include <time.h>
 #include <math.h>
+tstMaxInfo MaxInfo[enMaxCount] = INNIT_Count;
 
 uint8 u8Ingredients[]={MAX_LETTUCE,MAX_TOMATO,MAX_MEAT,MAX_BREAD,MAX_CHEESE};
 
@@ -34,34 +35,16 @@ void main (void)
 void Restaurant()
 {
 	Menu();
+	Interfaz();
+
 }
 
 void Drive_Thru()
 {
 	Menu();
+	Interfaz();
 }
 
-void delay(uint8 number_of_seconds) 
-{ 
-    // Converting time into milli_seconds 
-    uint8 milli_seconds = 1000 * number_of_seconds; 
-  
-    // Storing start time 
-    clock_t start_time = clock(); 
-  
-    // looping till required time is not achieved 
-    while (clock() < start_time + milli_seconds) 
-        ; 
-} 
-
-uint8 printRandoms(uint8 lower, uint8 upper,  uint8 count) 
-{ 
-    uint8 i; 
-    uint8 num;
-    num = (rand() % (upper - lower + FACTOR)) + lower; 
-    //printf("%d \n", num); 
-    return num;
-} 
 void Menu()
 {
 	uint8 u8Order;
@@ -134,7 +117,7 @@ void Desserts()
 		printf("Please select a correct option:\n1)Cheesecake\n2)Lemon Pie\n3)Ice Cream\n4)Nutella Cake\n"); 
 		scanf("%d", &u8Dessert); 
 	} 
-	AmountDesserts();
+	AmountDesserts(u8Dessert);
 }
 
 void Fries()
@@ -148,7 +131,7 @@ void Fries()
 		printf("Please select a correct option:\n1)Small\n2)Medium\n3)Large\n4)Extra-Large\n"); 
 		scanf("%d", &u8Size); 
 	} 
-	AmountFries();	
+	AmountFries(u8Size);	
 }
 
 uint8 Extra()
@@ -200,6 +183,7 @@ void AmountBurgers(uint8 u8Type)
 			u8Ingredients[MEAT] -= u8AmountMeat;
 			u8Ingredients[BREAD] -= u8AmountBread;
 			u8Ingredients[CHEESE] -= u8AmountCheese;
+			MaxInfo	[enMaxBurgers].u32EarnMoney += Big_Mac;
 		}
 	}
 	else if(u8Type==OPTION2)
@@ -242,6 +226,7 @@ void AmountBurgers(uint8 u8Type)
 			u8Ingredients[MEAT] -= u8AmountMeat;
 			u8Ingredients[BREAD] -= u8AmountBread;
 			u8Ingredients[CHEESE] -= u8AmountCheese;
+			MaxInfo[enMaxBurgers].u32EarnMoney += Quarter_Pounder;
 		}
 	}
 	else 
@@ -263,8 +248,10 @@ void AmountBurgers(uint8 u8Type)
 			u8Ingredients[MEAT] -= u8AmountMeat;
 			u8Ingredients[BREAD] -= u8AmountBread;
 			u8Ingredients[CHEESE] -= u8AmountCheese;
+			MaxInfo[enMaxBurgers].u32EarnMoney += Deluxe;
 		}
 	}
+	MaxOrderBurger(u8Amount,u8Type);
 }
 
 void AmountDrinks()
@@ -278,12 +265,13 @@ void AmountDrinks()
 		printf("Type in a correct number\n");
 		scanf("%d", &u8AmountDrinks);
 	}
+	MaxOrderDrinks(u8AmountDrinks);
 }
 
-void AmountDesserts()
+void AmountDesserts(uint8 u8Dessert)
 {
 	uint8 u8AmountDesserts;
-	printf("How many Drinks do you want?\n");
+	printf("How many Desserts do you want?\n");
 	scanf("%d", &u8AmountDesserts);
 	while(u8AmountDesserts<0)
 	{
@@ -291,9 +279,10 @@ void AmountDesserts()
 		printf("Type in a correct number\n");
 		scanf("%d", &u8AmountDesserts);
 	}
+	MaxOrderDesserts(u8AmountDesserts , u8Dessert);
 }
 
-void AmountFries()
+void AmountFries(uint8 u8Size)
 {
 	uint8 u8AmountFries;
 	printf("How many Friess do you want?\n");
@@ -303,5 +292,167 @@ void AmountFries()
 		fflush(stdin);
 		printf("Type in a correct number\n");
 		scanf("%d", &u8AmountFries);
+	}
+	MaxOrderFries (u8AmountFries, u8Size);
+}
+
+/*Idea- Poner una interfaz al principio para poner que si quisiera saber el monto y la cantidad de cada pedido (hamburguesa, bebida, postre, papas) y ponerlas con un switch y al escoger una, imprimimos el resultado con la estructura y en la funcion quitamos los print*/
+void MaxOrderBurger(uint8 u8Amount, uint8 u8Type)
+{
+	uint8 u8Confirm = 0;
+	uint32 u32BMoney = 0;
+	printf("Do you want to see the burgers count?\n1)Yes\n2)No\n");
+	scanf("%d",&u8Confirm);
+	MaxInfo[enMaxBurgers].u8MaxOrder += u8Amount;
+	if(u8Type == 1)
+	{
+		u32BMoney = Big_Mac;
+	}
+	else if (u8Type	== 2)
+	{
+		u32BMoney = Cheeseburger;
+	}
+	else if (u8Type	== 3)
+	{
+		u32BMoney = Quarter_Pounder;
+	}
+	else if (u8Type	== 4)
+	{
+		u32BMoney = Deluxe;
+	}
+	u32BMoney *= u8Amount;
+	MaxInfo[enMaxBurgers].u32EarnMoney += u32BMoney;
+	if (u8Confirm == 1)
+	{
+		printf("Until now we have %d Burgers counted\n",MaxInfo[enMaxBurgers].u8MaxOrder);
+		printf("Earn Money by Burgers %d \n",MaxInfo[enMaxBurgers].u32EarnMoney);
+	}
+	else
+	{
+		/*Nothing to do*/
+	}	
+}
+
+void MaxOrderDrinks (uint8 u8AmountDrinks)
+{
+	uint8 u8Confirm = 0;
+	uint32 u32DMoney = 0;
+	printf("Do you want to see the drinks count?\n1)Yes\n2)No\n");
+	scanf("%d",&u8Confirm);
+	MaxInfo[enMaxDrinks].u8MaxOrder += u8AmountDrinks;
+	u32DMoney = Drink;
+	u32DMoney *= u8AmountDrinks;
+	MaxInfo[enMaxDrinks].u32EarnMoney += u32DMoney;
+	if (u8Confirm == 1)
+	{
+		printf("Until now we have %d Drinks counted\n", MaxInfo[enMaxDrinks].u8MaxOrder);
+		printf("Earn Money by Drinks %d \n",MaxInfo[enMaxDrinks].u32EarnMoney);
+	}
+	else
+	{
+		/*Nothing to do*/
+	}
+}
+
+void MaxOrderDesserts (uint8 u8AmountDesserts , uint8 u8Dessert)
+{
+	uint8 u8Confirm = 0;
+	uint32 u32Money = 0;
+	printf("Do you want to see the Desserts count?\n1)Yes\n2)No\n");
+	scanf("%d",&u8Confirm);
+	MaxInfo[enMaxDesserts].u8MaxOrder += u8AmountDesserts;
+	if (u8Dessert == 1)
+	{
+		u32Money = Cheesecake1;
+	}
+	else if (u8Dessert	== 2)
+	{
+		u32Money = Lemon_Pie1;
+	}
+	else if (u8Dessert	== 3)
+	{
+		u32Money = Ice_Cream1;
+	}
+	else
+	{
+		u32Money = Nutella_Cake1;
+	}
+	u32Money *= u8AmountDesserts;
+	MaxInfo[enMaxDesserts].u32EarnMoney += u32Money;
+
+	if (u8Confirm == 1)
+	{
+		printf("Until now we have %d Desserts counted in your order\n",MaxInfo[enMaxDesserts].u8MaxOrder);
+		printf("Earn Money by Desserts %d \n",MaxInfo[enMaxDesserts].u32EarnMoney);
+	}
+	else 
+	{
+		/*Nothing to do*/
+	}
+}
+
+void MaxOrderFries (uint8 u8AmountFries, uint8 u8Size)
+{
+	uint8 u8Confirm = 0;
+	uint32 u32Money = 0;
+	printf("Do you want to see the Fries count?\n1)Yes\n2)No\n");
+	scanf("%d",&u8Confirm);
+	MaxInfo[enMaxFries].u8MaxOrder += u8AmountFries;
+	if (u8Size == 1)
+	{
+		u32Money = Small;
+	}
+	else if (u8Size	== 2)
+	{
+		u32Money = Medium;
+	}
+	else if (u8Size	== 3)
+	{
+		u32Money = Large;
+	}
+	else
+	{
+		u32Money = Extra_Large;
+	}
+	u32Money *= u8AmountFries;
+	MaxInfo[enMaxFries].u32EarnMoney += u32Money;
+	if (u8Confirm == 1)
+	{
+		printf("Until now we have %d Fries counted in your order\n",MaxInfo[enMaxFries].u8MaxOrder);
+		printf("Earn Money by Fries %d \n",MaxInfo[enMaxFries].u32EarnMoney);
+	}
+	else 
+	{
+		/*Nothing to do*/
+	}	
+}
+void Interfaz()
+{
+	uint8 u8Count;
+	uint8 u8Orders;
+	printf("Would you like to know the order count?\n1)Yes\n2)No\n");
+	scanf("%d",&u8Count);
+	if(u8Count == 1)
+	{
+		printf("What order would you like to know?\n1)Burgers\n2)Drinks\n3)Desserts\n4)Fries\n");
+		scanf("%d",&u8Orders);
+		switch(u8Orders)
+		{
+			case 1:
+			MaxOrderBurger(u8Amount,u8Type);
+			break;
+
+			case 2:
+			MaxOrderDrinks(u8AmountDrinks);
+			break;
+
+			case 3:
+			MaxOrderDesserts(u8AmountDesserts , u8Dessert);
+			break;
+
+			case 4:
+			MaxOrderFries (u8AmountFries, u8Size);
+			break;
+		}
 	}
 }

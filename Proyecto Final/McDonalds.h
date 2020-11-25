@@ -2,6 +2,21 @@ typedef unsigned char uint8;
 typedef unsigned short uint16;
 typedef unsigned int uint32;
 
+typedef struct 
+{
+	uint8 u8MaxOrder;
+	uint32 u32EarnMoney;
+}tstMaxInfo;
+		
+typedef enum 
+{	
+	enMaxBurgers,
+	enMaxDrinks,
+	enMaxDesserts,
+	enMaxFries,
+	enMaxCount
+}tenMaxCount;
+
 #define FACTOR 	   1
 #define RESTAURANT 1
 #define DRIVE_THRU 2
@@ -24,6 +39,28 @@ typedef unsigned int uint32;
 #define MEAT        2
 #define BREAD       3
 #define CHEESE      4
+#define Big_Mac		70
+#define	Cheeseburger 65
+#define Quarter_Pounder 80
+#define Deluxe		100
+#define Drink		30
+#define Cheesecake1 50
+#define Lemon_Pie1	55
+#define	Ice_Cream1	40
+#define	Nutella_Cake1 70
+#define Small		25
+#define	Medium		35
+#define	Large		40
+#define Extra_Large 50
+
+#define INNIT_Count			\
+{							\
+	{0,0},					\
+	{0,0},					\
+	{0,0},					\
+	{0,0}					\
+}		 
+
 
 void Restaurant();
 void Drive_Thru();
@@ -37,5 +74,10 @@ void AmountBurgers(uint8 u8Type);
 void delay(uint8 number_of_seconds);
 uint8 printRandoms(uint8 lower, uint8 upper,  uint8 count);
 void AmountDrinks();
-void AmountDesserts();
-void AmountFries();
+void AmountDesserts(uint8 u8Dessert);
+void AmountFries(uint8 u8Size);
+void MaxOrderBurger(uint8 u8Amount, uint8 u8Type);
+void MaxOrderDrinks (uint8 u8AmountDrinks);
+void MaxOrderDesserts (uint8 u8AmountDesserts , uint8 u8Dessert);
+void MaxOrderFries (uint8 u8AmountFries, uint8 u8Size);
+void Interfaz();
