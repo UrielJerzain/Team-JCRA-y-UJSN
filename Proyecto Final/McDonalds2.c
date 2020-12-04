@@ -37,7 +37,32 @@ void Start()
 }
 
 void Employee()
-{
+{	
+	uint8 u8Account = RESTRICTION;
+	printf("What do you want to know?\n1)Burgers\n2)Drinks\n3)Desserts\n4)Fries\n");
+	scanf("%d",&u8Account);
+	while(u8Account<LIMIT1 || u8Account>LIMIT2) 
+	{ 
+		fflush(stdin); 
+		printf("Please select a correct option:\n1)Burgers\n2)Drinks\n3)Desserts\n4)Fries\n"); 
+		scanf("%d", &u8Account); 
+	}
+	if(u8Account == OPTION1)
+	{
+		printf("\n\nAt the moment the Costumer had ordered:\nBurgers:\nBig Mac %d  $%d\nCheeseburger %d  $%d\nQuarter Pounder %d  $%d\nDeluxe %d  $%d\nTotal Burgers %d  $%d\n",stTotalBurgers[enBigMac].u8Amount , stTotalBurgers[enBigMac].u32EarnMoney, stTotalBurgers[enCheeseBurger].u8Amount , stTotalBurgers[enCheeseBurger].u32EarnMoney, stTotalBurgers[enQuarterPounder].u8Amount , stTotalBurgers[enQuarterPounder].u32EarnMoney, stTotalBurgers[enDeluxe].u8Amount , stTotalBurgers[enDeluxe].u32EarnMoney, stTotalBurgers[enTotalBurgers].u8Amount , stTotalBurgers[enTotalBurgers].u32EarnMoney);
+	}
+	else if(u8Account == OPTION2)
+	{
+		printf("\n\nAt the moments the Costumer had ordered:\nDrinks:\nSprite %d  $%d\nCoke %d  $%d\nFanta %d  $%d\nSquirt %d  $%d\nTotal Drinks %d  $%d\n",stTotalDrinks[enSprite].u8Amount , stTotalDrinks[enSprite].u32EarnMoney, stTotalDrinks[enCoke].u8Amount , stTotalDrinks[enCoke].u32EarnMoney, stTotalDrinks[enFanta].u8Amount , stTotalDrinks[enFanta].u32EarnMoney, stTotalDrinks[enSquirt].u8Amount , stTotalDrinks[enSquirt].u32EarnMoney, stTotalDrinks[enTotalDrinks].u8Amount , stDrinks[enTotalDrinks].u32EarnMoney);
+	}
+	else if(u8Account == OPTION3)
+	{
+		printf("\n\nAt the moments the Costumer had ordered:\nDesserts:\nCheese Cake %d  $%d\nLemon Pie %d  $%d\nIce Cream %d  $%d\nNutella Cake %d  $%d\nTotal Desserts %d  $%d\n",stTotalDesserts[enCheeseCake].u8Amount , stTotalDesserts[enCheeseCake].u32EarnMoney, stTotalDesserts[enLemonPie].u8Amount , stTotalDesserts[enLemonPie].u32EarnMoney, stTotalDesserts[enIceCream].u8Amount , stTotalDesserts[enIceCream].u32EarnMoney, stTotalDesserts[enNutellaCake].u8Amount , stTotalDesserts[enNutellaCake].u32EarnMoney, stTotalDesserts[enTotalDesserts].u8Amount , stTotalDesserts[enTotalDesserts].u32EarnMoney);
+	}
+	else
+	{
+		printf("\n\nAt the moments the Costumer had ordered:\nFries:\nSmall %d  $%d\nMedium %d  $%d\nLarge %d  $%d\nExtra Large %d  $%d\nTotal Fries %d  $%d\n\n\n",stTotalFries[enSmall].u8Amount , stTotalFries[enSmall].u32EarnMoney, stTotalFries[enMedium].u8Amount , stTotalFries[enMedium].u32EarnMoney, stTotalFries[enLarge].u8Amount , stTotalFries[enLarge].u32EarnMoney, stTotalFries[enExtraLarge].u8Amount , stTotalFries[enExtraLarge].u32EarnMoney, stTotalFries[enTotalFries].u8Amount , stTotalFries[enTotalFries].u32EarnMoney);
+	}
 
 }
 
@@ -241,6 +266,8 @@ void AmountBurgers(uint8 u8Type)
 		if(u8AmountLettuce > u8Ingredients[LETTUCE] || u8AmountTomato > u8Ingredients[TOMATO] || u8AmountMeat > u8Ingredients[MEAT] || u8AmountBread > u8Ingredients[BREAD] || u8AmountCheese > u8Ingredients[CHEESE])
 		{
 			printf("Sorry we don't have enough ingredients\n");
+			printf("We will bring more\n");
+			//Refuerzos();
 		}
 		else
 		{
@@ -521,7 +548,8 @@ uint8 Pay()
 	uint32 u32Total;
 	uint32 u32Pay=0;
 	uint32 u32Change;
-	uint8 u8Payed;
+	uint8 u8Payed = FACTOR;
+	uint8 u8i;
 	u32Total=(stBurgers[enTotalBurgers].u32EarnMoney + stDrinks[enTotalDrinks].u32EarnMoney + stDesserts[enTotalDesserts].u32EarnMoney + stFries[enTotalFries].u32EarnMoney);
 	printf("Your total is $%d.\nPlease type in the total or more.\n", u32Total);
 	scanf("%d", &u32Pay);
@@ -541,10 +569,18 @@ uint8 Pay()
 		/*Nothing to do*/
 	}
 	Backup();
-	tstMaxInfo stBurgers[enMaxBurgers]=INNIT;
-	tstMaxInfo stDrinks[enMaxDrinks]=INNIT;
-	tstMaxInfo stDesserts[enMaxDesserts]=INNIT;
-	tstMaxInfo stFries[enMaxFries]=INNIT;
+	for(u8i=0;u8i<=OPTION4; u8i++)
+	{
+		stBurgers[u8i].u8Amount =0;	
+		stDrinks[u8i].u8Amount=0;
+		stDesserts[u8i].u8Amount=0;
+		stFries[u8i].u8Amount=0;
+		stBurgers[u8i].u32EarnMoney =0;	
+		stDrinks[u8i].u32EarnMoney=0;
+		stDesserts[u8i].u32EarnMoney=0;
+		stFries[u8i].u32EarnMoney=0;
+	}
+	
 	return u8Payed;
 }
 
@@ -555,47 +591,52 @@ void Exit()
 
 void Backup()
 {
-	stTotalBurgers[enBigMac].u8Amount = stBurgers[enBigMac].u8Amount;
-	stTotalBurgers[enBigMac].u32EarnMoney = stBurgers[enBigMac].u32EarnMoney;
-	stTotalBurgers[enCheeseBurger].u8Amount = stBurgers[enCheeseBurger].u8Amount;
-	stTotalBurgers[enCheeseBurger].u32EarnMoney = stBurgers[enCheeseBurger].u32EarnMoney;
-	stTotalBurgers[enQuarterPounder].u8Amount = stBurgers[enQuarterPounder].u8Amount;
-	stTotalBurgers[enQuarterPounder].u32EarnMoney = stBurgers[enQuarterPounder].u32EarnMoney;
-	stTotalBurgers[enDeluxe].u8Amount = stBurgers[enDeluxe].u8Amount;
-	stTotalBurgers[enDeluxe].u32EarnMoney = stBurgers[enDeluxe].u32EarnMoney;
-	stTotalBurgers[enTotalBurgers].u8Amount = stBurgers[enTotalBurgers].u8Amount;
-	stTotalBurgers[enTotalBurgers].u32EarnMoney = stBurgers[enTotalBurgers].u32EarnMoney;
+	stTotalBurgers[enBigMac].u8Amount += stBurgers[enBigMac].u8Amount;
+	stTotalBurgers[enBigMac].u32EarnMoney += stBurgers[enBigMac].u32EarnMoney;
+	stTotalBurgers[enCheeseBurger].u8Amount += stBurgers[enCheeseBurger].u8Amount;
+	stTotalBurgers[enCheeseBurger].u32EarnMoney += stBurgers[enCheeseBurger].u32EarnMoney;
+	stTotalBurgers[enQuarterPounder].u8Amount += stBurgers[enQuarterPounder].u8Amount;
+	stTotalBurgers[enQuarterPounder].u32EarnMoney += stBurgers[enQuarterPounder].u32EarnMoney;
+	stTotalBurgers[enDeluxe].u8Amount += stBurgers[enDeluxe].u8Amount;
+	stTotalBurgers[enDeluxe].u32EarnMoney += stBurgers[enDeluxe].u32EarnMoney;
+	stTotalBurgers[enTotalBurgers].u8Amount += stBurgers[enTotalBurgers].u8Amount;
+	stTotalBurgers[enTotalBurgers].u32EarnMoney += stBurgers[enTotalBurgers].u32EarnMoney;
 
-	stTotalDrinks[enSprite].u8Amount = stDrinks[enSprite].u8Amount;
-	stTotalDrinks[enSprite].u32EarnMoney = stDrinks[enSprite].u32EarnMoney;
-	stTotalDrinks[enCoke].u8Amount = stDrinks[enCoke].u8Amount;
-	stTotalDrinks[enCoke].u32EarnMoney = stDrinks[enCoke].u32EarnMoney;
-	stTotalDrinks[enFanta].u8Amount = stDrinks[enFanta].u8Amount;
-	stTotalDrinks[enFanta].u32EarnMoney = stDrinks[enFanta].u32EarnMoney;
-	stTotalDrinks[enSquirt].u8Amount = stDrinks[enSquirt].u8Amount;
-	stTotalDrinks[enSquirt].u32EarnMoney = stDrinks[enSquirt].u32EarnMoney;
-	stTotalDrinks[enTotalDrinks].u8Amount = stDrinks[enTotalDrinks].u8Amount;
-	stTotalDrinks[enTotalDrinks].u32EarnMoney = stDrinks[enTotalDrinks].u32EarnMoney;
+	stTotalDrinks[enSprite].u8Amount += stDrinks[enSprite].u8Amount;
+	stTotalDrinks[enSprite].u32EarnMoney += stDrinks[enSprite].u32EarnMoney;
+	stTotalDrinks[enCoke].u8Amount += stDrinks[enCoke].u8Amount;
+	stTotalDrinks[enCoke].u32EarnMoney += stDrinks[enCoke].u32EarnMoney;
+	stTotalDrinks[enFanta].u8Amount += stDrinks[enFanta].u8Amount;
+	stTotalDrinks[enFanta].u32EarnMoney += stDrinks[enFanta].u32EarnMoney;
+	stTotalDrinks[enSquirt].u8Amount += stDrinks[enSquirt].u8Amount;
+	stTotalDrinks[enSquirt].u32EarnMoney += stDrinks[enSquirt].u32EarnMoney;
+	stTotalDrinks[enTotalDrinks].u8Amount += stDrinks[enTotalDrinks].u8Amount;
+	stTotalDrinks[enTotalDrinks].u32EarnMoney += stDrinks[enTotalDrinks].u32EarnMoney;
 
-	stTotalDesserts[enCheeseCake].u8Amount = stDesserts[enCheeseCake].u8Amount;
-	stTotalDesserts[enCheeseCake].u32EarnMoney = stDesserts[enCheeseCake].u32EarnMoney;
-	stTotalDesserts[enLemonPie].u8Amount = stDesserts[enLemonPie].u8Amount;
-	stTotalDesserts[enLemonPie].u32EarnMoney = stDesserts[enLemonPie].u32EarnMoney;
-	stTotalDesserts[enIceCream].u8Amount = stDesserts[enIceCream].u8Amount;
-	stTotalDesserts[enIceCream].u32EarnMoney = stDesserts[enIceCream].u32EarnMoney;
-	stTotalDesserts[enNutellaCake].u8Amount = stDesserts[enNutellaCake].u8Amount;
-	stTotalDesserts[enNutellaCake].u32EarnMoney = stDesserts[enNutellaCake].u32EarnMoney;
-	stTotalDesserts[enTotalDesserts].u8Amount = stDesserts[enTotalDesserts].u8Amount;
-	stTotalDesserts[enTotalDesserts].u32EarnMoney = stDesserts[enTotalDesserts].u32EarnMoney;
+	stTotalDesserts[enCheeseCake].u8Amount += stDesserts[enCheeseCake].u8Amount;
+	stTotalDesserts[enCheeseCake].u32EarnMoney += stDesserts[enCheeseCake].u32EarnMoney;
+	stTotalDesserts[enLemonPie].u8Amount += stDesserts[enLemonPie].u8Amount;
+	stTotalDesserts[enLemonPie].u32EarnMoney += stDesserts[enLemonPie].u32EarnMoney;
+	stTotalDesserts[enIceCream].u8Amount += stDesserts[enIceCream].u8Amount;
+	stTotalDesserts[enIceCream].u32EarnMoney += stDesserts[enIceCream].u32EarnMoney;
+	stTotalDesserts[enNutellaCake].u8Amount += stDesserts[enNutellaCake].u8Amount;
+	stTotalDesserts[enNutellaCake].u32EarnMoney += stDesserts[enNutellaCake].u32EarnMoney;
+	stTotalDesserts[enTotalDesserts].u8Amount += stDesserts[enTotalDesserts].u8Amount;
+	stTotalDesserts[enTotalDesserts].u32EarnMoney += stDesserts[enTotalDesserts].u32EarnMoney;
 
-	stTotalFries[enSmall].u8Amount = stFries[enSmall].u8Amount;
-	stTotalFries[enSmall].u32EarnMoney = stFries[enSmall].u32EarnMoney;
-	stTotalFries[enMedium].u8Amount = stFries[enMedium].u8Amount;
-	stTotalFries[enMedium].u32EarnMoney = stFries[enMedium].u32EarnMoney;
-	stTotalFries[enLarge].u8Amount = stFries[enLarge].u8Amount;
-	stTotalFries[enLarge].u32EarnMoney = stFries[enLarge].u32EarnMoney;
-	stTotalFries[enFries].u8Amount = stFries[enFries].u8Amount;
-	stTotalFries[enFries].u32EarnMoney = stFries[enFries].u32EarnMoney;
-	stTotalFries[enTotalFries].u8Amount = stFries[enTotalFries].u8Amount;
-	stTotalFries[enTotalFries].u32EarnMoney = stFries[enTotalFries].u32EarnMoney;
+	stTotalFries[enSmall].u8Amount += stFries[enSmall].u8Amount;
+	stTotalFries[enSmall].u32EarnMoney += stFries[enSmall].u32EarnMoney;
+	stTotalFries[enMedium].u8Amount += stFries[enMedium].u8Amount;
+	stTotalFries[enMedium].u32EarnMoney += stFries[enMedium].u32EarnMoney;
+	stTotalFries[enLarge].u8Amount += stFries[enLarge].u8Amount;
+	stTotalFries[enLarge].u32EarnMoney += stFries[enLarge].u32EarnMoney;
+	stTotalFries[enExtraLarge].u8Amount += stFries[enExtraLarge].u8Amount;
+	stTotalFries[enExtraLarge].u32EarnMoney += stFries[enExtraLarge].u32EarnMoney;
+	stTotalFries[enTotalFries].u8Amount += stFries[enTotalFries].u8Amount;
+	stTotalFries[enTotalFries].u32EarnMoney += stFries[enTotalFries].u32EarnMoney;
+}
+
+void Refuerzos()
+{
+
 }

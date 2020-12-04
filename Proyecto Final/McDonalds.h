@@ -124,3 +124,5 @@ void Costumer();
 void Employee();
 uint8 Pay();
 void Exit();
+void Backup();
+void Refuerzos();
