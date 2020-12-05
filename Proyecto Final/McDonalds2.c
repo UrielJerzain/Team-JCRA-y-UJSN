@@ -267,7 +267,7 @@ void AmountBurgers(uint8 u8Type)
 		{
 			printf("Sorry we don't have enough ingredients\n");
 			printf("We will bring more\n");
-			//Refuerzos();
+			Recharge(u8AmountLettuce,u8AmountMeat,u8AmountCheese,u8AmountBread,u8AmountTomato);
 		}
 		else
 		{
@@ -290,6 +290,8 @@ void AmountBurgers(uint8 u8Type)
 		if(u8AmountLettuce > u8Ingredients[LETTUCE] || u8AmountTomato > u8Ingredients[TOMATO] || u8AmountMeat > u8Ingredients[MEAT] || u8AmountBread > u8Ingredients[BREAD] || u8AmountCheese > u8Ingredients[CHEESE])
 		{
 			printf("Sorry we don't have enough ingredients\n");
+			printf("We will bring more\n");
+			Recharge(u8AmountLettuce,u8AmountMeat,u8AmountCheese,u8AmountBread,u8AmountTomato);
 		}
 		else
 		{
@@ -312,6 +314,8 @@ void AmountBurgers(uint8 u8Type)
 		if(u8AmountLettuce > u8Ingredients[LETTUCE] || u8AmountTomato > u8Ingredients[TOMATO] || u8AmountMeat > u8Ingredients[MEAT] || u8AmountBread > u8Ingredients[BREAD] || u8AmountCheese > u8Ingredients[CHEESE])
 		{
 			printf("Sorry we don't have enough ingredients\n");
+			printf("We will bring more\n");
+			Recharge(u8AmountLettuce,u8AmountMeat,u8AmountCheese,u8AmountBread,u8AmountTomato);
 		}
 		else
 		{
@@ -334,6 +338,8 @@ void AmountBurgers(uint8 u8Type)
 		if(u8AmountLettuce > u8Ingredients[LETTUCE] || u8AmountTomato > u8Ingredients[TOMATO] || u8AmountMeat > u8Ingredients[MEAT] || u8AmountBread > u8Ingredients[BREAD] || u8AmountCheese > u8Ingredients[CHEESE])
 		{
 			printf("Sorry we don't have enough ingredients\n");
+			printf("We will bring more\n");
+			Recharge(u8AmountLettuce,u8AmountMeat,u8AmountCheese,u8AmountBread,u8AmountTomato);
 		}
 		else
 		{
@@ -636,7 +642,55 @@ void Backup()
 	stTotalFries[enTotalFries].u32EarnMoney += stFries[enTotalFries].u32EarnMoney;
 }
 
-void Refuerzos()
+void Recharge(uint8 u8AmountLettuce, uint8 u8AmountMeat, uint8 u8AmountCheese, uint8 u8AmountBread, uint8 u8AmountTomato)
 {
+	uint32 u32Delay;
+	uint8 x = FACTOR; 
+	while(x == FACTOR)
+	{
 
+
+		if ( u8AmountLettuce > u8Ingredients[LETTUCE]) 
+		{ 
+			printf("Llenando Lechuga");
+			u32Delay = DELAY; 
+			while(u32Delay--); 
+			u8Ingredients[LETTUCE] += MAX_LETTUCE;
+
+		} 
+		else if ( u8AmountTomato > u8Ingredients[TOMATO] ) 
+		{ 
+			printf("\nLlenando Tomate"); 
+			u32Delay = DELAY; 
+			while(u32Delay--); 
+			u8Ingredients[TOMATO] += MAX_TOMATO; 
+		} 
+		else if (u8AmountMeat > u8Ingredients[MEAT]) 
+		{ 
+			printf("\nLlenando Carne"); 
+			u32Delay = DELAY; 
+			while(u32Delay--); 
+			u8Ingredients[MEAT] += MAX_MEAT; 
+		} 
+		else if ( u8AmountBread > u8Ingredients[BREAD] ) 
+		{ 
+			printf("\nLlenando Pan"); 
+			u32Delay = DELAY; 
+			while(u32Delay--); 
+			u8Ingredients[BREAD] += MAX_BREAD;
+		} 
+		else if (u8AmountCheese > u8Ingredients[CHEESE]) 
+		{ 
+			printf("\nLlenando Queso\n"); 
+			u32Delay = DELAY; 
+			while(u32Delay--); 
+			u8Ingredients[CHEESE] += MAX_CHEESE;
+		} 
+		else
+		{
+			x = FALSO;
+		}
+		
+	}
+	Menu();
 }

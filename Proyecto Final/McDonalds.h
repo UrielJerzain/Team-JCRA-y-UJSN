@@ -1,6 +1,7 @@
 typedef unsigned char uint8;
 typedef unsigned short uint16;
 typedef unsigned int uint32;
+typedef unsigned long long uint64;
 
 typedef struct 
 {
@@ -49,6 +50,7 @@ typedef enum
 }tenFries;
 
 #define FACTOR 	   1
+#define FALSO	   0
 #define RESTAURANT 1
 #define DRIVE_THRU 2
 #define MAX_LETTUCE 100
@@ -91,6 +93,7 @@ typedef enum
 #define RESTRICTION 50
 #define EMPLOYEE 1
 #define COSTUMER 2
+#define DELAY 3000000000
 
 #define INNIT    			\
 {							\
@@ -125,4 +128,4 @@ void Employee();
 uint8 Pay();
 void Exit();
 void Backup();
-void Refuerzos();
+void Recharge(uint8 u8AmountLettuce, uint8 u8AmountMeat, uint8 u8AmountCheese, uint8 u8AmountBread, uint8 u8AmountTomato);
