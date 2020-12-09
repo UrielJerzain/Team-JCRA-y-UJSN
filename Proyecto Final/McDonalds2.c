@@ -32,7 +32,7 @@ void Start()
 	}
 	else
 	{
-		Costumer();
+		Order();
 	}
 }
 
@@ -56,7 +56,7 @@ void Employee()
 		}
 		else if(u8Account == OPTION2)
 		{
-			printf("\n\nAt the moments the Costumer had ordered:\nDrinks:\nSprite %d  $%d\nCoke %d  $%d\nFanta %d  $%d\nSquirt %d  $%d\nTotal Drinks %d  $%d\n",stTotalDrinks[enSprite].u8Amount , stTotalDrinks[enSprite].u32EarnMoney, stTotalDrinks[enCoke].u8Amount , stTotalDrinks[enCoke].u32EarnMoney, stTotalDrinks[enFanta].u8Amount , stTotalDrinks[enFanta].u32EarnMoney, stTotalDrinks[enSquirt].u8Amount , stTotalDrinks[enSquirt].u32EarnMoney, stTotalDrinks[enTotalDrinks].u8Amount , stDrinks[enTotalDrinks].u32EarnMoney);
+			printf("\n\nAt the moments the Costumer had ordered:\nDrinks:\nSprite %d  $%d\nCoke %d  $%d\nFanta %d  $%d\nSquirt %d  $%d\nTotal Drinks %d  $%d\n",stTotalDrinks[enSprite].u8Amount , stTotalDrinks[enSprite].u32EarnMoney, stTotalDrinks[enCoke].u8Amount , stTotalDrinks[enCoke].u32EarnMoney, stTotalDrinks[enFanta].u8Amount , stTotalDrinks[enFanta].u32EarnMoney, stTotalDrinks[enSquirt].u8Amount , stTotalDrinks[enSquirt].u32EarnMoney, stTotalDrinks[enTotalDrinks].u8Amount , stTotalDrinks[enTotalDrinks].u32EarnMoney);
 		}
 		else if(u8Account == OPTION3)
 		{
@@ -77,13 +77,6 @@ void Employee()
 		}	 
 	}
 }
-
-void Costumer()
-{
-	Order();
-}
-
-
 
 void Order()
 {

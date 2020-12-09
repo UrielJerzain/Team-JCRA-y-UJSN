@@ -122,7 +122,6 @@ void MaxOrderBurger(uint8 u8Amount, uint8 u8Type);
 void MaxOrderDrinks (uint8 u8Amount, uint8 u8Drinks);
 void MaxOrderDesserts (uint8 u8Amount , uint8 u8Dessert);
 void MaxOrderFries (uint8 u8Amount, uint8 u8Size);
-void Costumer();
 void Employee();
 void Pay();
 void Exit();
