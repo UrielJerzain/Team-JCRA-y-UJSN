@@ -1,7 +1,6 @@
 typedef unsigned char uint8;
 typedef unsigned short uint16;
 typedef unsigned int uint32;
-typedef unsigned long long uint64;
 
 typedef struct 
 {
@@ -93,7 +92,11 @@ typedef enum
 #define RESTRICTION 50
 #define EMPLOYEE 1
 #define COSTUMER 2
-#define DELAY 3000000000
+#define DELAY_INGREDIENTS 15
+#define DELAY_BURGERS 10
+#define DELAY_DESSERTS 20
+#define DELAY_DRINKS 15
+#define DELAY_FRIES 30
 
 #define INNIT    			\
 {							\
@@ -105,10 +108,7 @@ typedef enum
 }		 
 
 void Start();
-void Restaurant();
-void Drive_Thru();
 void Order();
-void Menu();
 void Burgers();
 void Drinks();
 void Desserts();
@@ -122,10 +122,10 @@ void MaxOrderBurger(uint8 u8Amount, uint8 u8Type);
 void MaxOrderDrinks (uint8 u8Amount, uint8 u8Drinks);
 void MaxOrderDesserts (uint8 u8Amount , uint8 u8Dessert);
 void MaxOrderFries (uint8 u8Amount, uint8 u8Size);
-void Check();
 void Costumer();
 void Employee();
-uint8 Pay();
+void Pay();
 void Exit();
 void Backup();
 void Recharge(uint8 u8AmountLettuce, uint8 u8AmountMeat, uint8 u8AmountCheese, uint8 u8AmountBread, uint8 u8AmountTomato);
+void delay(uint32 number_of_seconds);

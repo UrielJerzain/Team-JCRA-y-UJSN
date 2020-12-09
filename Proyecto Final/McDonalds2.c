@@ -39,108 +39,58 @@ void Start()
 void Employee()
 {	
 	uint8 u8Account = RESTRICTION;
-	printf("What do you want to know?\n1)Burgers\n2)Drinks\n3)Desserts\n4)Fries\n");
-	scanf("%d",&u8Account);
-	while(u8Account<LIMIT1 || u8Account>LIMIT2) 
-	{ 
-		fflush(stdin); 
-		printf("Please select a correct option:\n1)Burgers\n2)Drinks\n3)Desserts\n4)Fries\n"); 
-		scanf("%d", &u8Account); 
-	}
-	if(u8Account == OPTION1)
+	uint8 u8x=0;
+	while(u8x<OPTION2)
 	{
-		printf("\n\nAt the moment the Costumer had ordered:\nBurgers:\nBig Mac %d  $%d\nCheeseburger %d  $%d\nQuarter Pounder %d  $%d\nDeluxe %d  $%d\nTotal Burgers %d  $%d\n",stTotalBurgers[enBigMac].u8Amount , stTotalBurgers[enBigMac].u32EarnMoney, stTotalBurgers[enCheeseBurger].u8Amount , stTotalBurgers[enCheeseBurger].u32EarnMoney, stTotalBurgers[enQuarterPounder].u8Amount , stTotalBurgers[enQuarterPounder].u32EarnMoney, stTotalBurgers[enDeluxe].u8Amount , stTotalBurgers[enDeluxe].u32EarnMoney, stTotalBurgers[enTotalBurgers].u8Amount , stTotalBurgers[enTotalBurgers].u32EarnMoney);
-	}
-	else if(u8Account == OPTION2)
-	{
-		printf("\n\nAt the moments the Costumer had ordered:\nDrinks:\nSprite %d  $%d\nCoke %d  $%d\nFanta %d  $%d\nSquirt %d  $%d\nTotal Drinks %d  $%d\n",stTotalDrinks[enSprite].u8Amount , stTotalDrinks[enSprite].u32EarnMoney, stTotalDrinks[enCoke].u8Amount , stTotalDrinks[enCoke].u32EarnMoney, stTotalDrinks[enFanta].u8Amount , stTotalDrinks[enFanta].u32EarnMoney, stTotalDrinks[enSquirt].u8Amount , stTotalDrinks[enSquirt].u32EarnMoney, stTotalDrinks[enTotalDrinks].u8Amount , stDrinks[enTotalDrinks].u32EarnMoney);
-	}
-	else if(u8Account == OPTION3)
-	{
-		printf("\n\nAt the moments the Costumer had ordered:\nDesserts:\nCheese Cake %d  $%d\nLemon Pie %d  $%d\nIce Cream %d  $%d\nNutella Cake %d  $%d\nTotal Desserts %d  $%d\n",stTotalDesserts[enCheeseCake].u8Amount , stTotalDesserts[enCheeseCake].u32EarnMoney, stTotalDesserts[enLemonPie].u8Amount , stTotalDesserts[enLemonPie].u32EarnMoney, stTotalDesserts[enIceCream].u8Amount , stTotalDesserts[enIceCream].u32EarnMoney, stTotalDesserts[enNutellaCake].u8Amount , stTotalDesserts[enNutellaCake].u32EarnMoney, stTotalDesserts[enTotalDesserts].u8Amount , stTotalDesserts[enTotalDesserts].u32EarnMoney);
-	}
-	else
-	{
-		printf("\n\nAt the moments the Costumer had ordered:\nFries:\nSmall %d  $%d\nMedium %d  $%d\nLarge %d  $%d\nExtra Large %d  $%d\nTotal Fries %d  $%d\n\n\n",stTotalFries[enSmall].u8Amount , stTotalFries[enSmall].u32EarnMoney, stTotalFries[enMedium].u8Amount , stTotalFries[enMedium].u32EarnMoney, stTotalFries[enLarge].u8Amount , stTotalFries[enLarge].u32EarnMoney, stTotalFries[enExtraLarge].u8Amount , stTotalFries[enExtraLarge].u32EarnMoney, stTotalFries[enTotalFries].u8Amount , stTotalFries[enTotalFries].u32EarnMoney);
-	}
+		printf("What do you want to know?\n1)Burgers\n2)Drinks\n3)Desserts\n4)Fries\n");
+		scanf("%d",&u8Account);
+		while(u8Account<LIMIT1 || u8Account>LIMIT2) 
+		{	 
+			fflush(stdin); 
+			printf("Please select a correct option:\n1)Burgers\n2)Drinks\n3)Desserts\n4)Fries\n"); 
+			scanf("%d", &u8Account); 
+		}
+		if(u8Account == OPTION1)
+		{
+			printf("\n\nAt the moment the Costumer had ordered:\nBurgers:\nBig Mac %d  $%d\nCheeseburger %d  $%d\nQuarter Pounder %d  $%d\nDeluxe %d  $%d\nTotal Burgers %d  $%d\n",stTotalBurgers[enBigMac].u8Amount , stTotalBurgers[enBigMac].u32EarnMoney, stTotalBurgers[enCheeseBurger].u8Amount , stTotalBurgers[enCheeseBurger].u32EarnMoney, stTotalBurgers[enQuarterPounder].u8Amount , stTotalBurgers[enQuarterPounder].u32EarnMoney, stTotalBurgers[enDeluxe].u8Amount , stTotalBurgers[enDeluxe].u32EarnMoney, stTotalBurgers[enTotalBurgers].u8Amount , stTotalBurgers[enTotalBurgers].u32EarnMoney);
+		}
+		else if(u8Account == OPTION2)
+		{
+			printf("\n\nAt the moments the Costumer had ordered:\nDrinks:\nSprite %d  $%d\nCoke %d  $%d\nFanta %d  $%d\nSquirt %d  $%d\nTotal Drinks %d  $%d\n",stTotalDrinks[enSprite].u8Amount , stTotalDrinks[enSprite].u32EarnMoney, stTotalDrinks[enCoke].u8Amount , stTotalDrinks[enCoke].u32EarnMoney, stTotalDrinks[enFanta].u8Amount , stTotalDrinks[enFanta].u32EarnMoney, stTotalDrinks[enSquirt].u8Amount , stTotalDrinks[enSquirt].u32EarnMoney, stTotalDrinks[enTotalDrinks].u8Amount , stDrinks[enTotalDrinks].u32EarnMoney);
+		}
+		else if(u8Account == OPTION3)
+		{
+			printf("\n\nAt the moments the Costumer had ordered:\nDesserts:\nCheese Cake %d  $%d\nLemon Pie %d  $%d\nIce Cream %d  $%d\nNutella Cake %d  $%d\nTotal Desserts %d  $%d\n",stTotalDesserts[enCheeseCake].u8Amount , stTotalDesserts[enCheeseCake].u32EarnMoney, stTotalDesserts[enLemonPie].u8Amount , stTotalDesserts[enLemonPie].u32EarnMoney, stTotalDesserts[enIceCream].u8Amount , stTotalDesserts[enIceCream].u32EarnMoney, stTotalDesserts[enNutellaCake].u8Amount , stTotalDesserts[enNutellaCake].u32EarnMoney, stTotalDesserts[enTotalDesserts].u8Amount , stTotalDesserts[enTotalDesserts].u32EarnMoney);
+		}
+		else
+		{
+			printf("\n\nAt the moments the Costumer had ordered:\nFries:\nSmall %d  $%d\nMedium %d  $%d\nLarge %d  $%d\nExtra Large %d  $%d\nTotal Fries %d  $%d\n\n\n",stTotalFries[enSmall].u8Amount , stTotalFries[enSmall].u32EarnMoney, stTotalFries[enMedium].u8Amount , stTotalFries[enMedium].u32EarnMoney, stTotalFries[enLarge].u8Amount , stTotalFries[enLarge].u32EarnMoney, stTotalFries[enExtraLarge].u8Amount , stTotalFries[enExtraLarge].u32EarnMoney, stTotalFries[enTotalFries].u8Amount , stTotalFries[enTotalFries].u32EarnMoney);
+		}
 
+		printf("Do you want to know anything else?\n1)Yes\n2)No\n"); 
+		scanf("%d",&u8x); 
+		while(u8x<OPTION1 || u8x>OPTION2) 
+		{ 
+			fflush(stdin); 
+			printf("Please select a correct option:\n1)Yes\n2)No\n"); 
+			scanf("%d", &u8x); 
+		}	 
+	}
 }
 
 void Costumer()
 {
-	uint8 u8Options;
-	printf("Welcome to McDonalds.\nWhere do you prefer to order?\n1) Inside the restaurant.\n2) Drive thru.\n");
-	scanf("%d", &u8Options);
-	while(u8Options<RESTAURANT || u8Options>DRIVE_THRU)
-	{
-		fflush(stdin);
-		printf("Please select a correct option:\n1) Inside the restaurant.\n2) Drive thru.\n"); 
-		scanf("%d", &u8Options);
-	}
-	if(u8Options==RESTAURANT)
-	{
-		Restaurant();
-	}
-	else 
-	{
-		Drive_Thru();
-	}
+	Order();
 }
 
-void Restaurant()
-{
-	Menu();
-}
 
-void Drive_Thru()
-{
-	Menu();
-}
-
-void Menu()
-{
-	uint8 u8Menu;
-	static uint8 u8Condition=0;
-	printf("What do you want to do?\n1)Order\n2)Consult your bill\n3)Pay\n4)Exit\n");
-	scanf("%d",&u8Menu); 
-	while(u8Menu<LIMIT1 || u8Menu>LIMIT2) 
-	{ 
-		fflush(stdin); 
-		printf("Please select a correct option:\n1)Order\n2)Consult your bill\n3)Pay\n4)Exit\n"); 
-		scanf("%d", &u8Menu); 
-	} 
-	if(u8Menu == OPTION1)
-	{
-		Order();
-	}
-	else if(u8Menu == OPTION2)
-	{
-		Check();
-	}
-	else if(u8Menu == OPTION3)
-	{
-		u8Condition=Pay();
-		Menu();
-	}
-	else
-	{
-		if(u8Condition==0)
-		{
-			printf("You cannot leave without paying your bill\n");
-			Menu();
-		}
-		else
-		{
-			u8Condition=0;
-			Exit();
-		}
-	}
-}
 
 void Order()
 {
 	uint8 u8Order;
 	uint8 u8x=FACTOR;
+	uint8 u8i=0;
+	uint8 u8j=0;
 	while(u8x==FACTOR)
 	{
 		printf("What would you like to order?\n1)Burgers\n2)Drinks\n3)Desserts\n4)Fries\n");
@@ -166,8 +116,8 @@ void Order()
     		u8x=Extra();
     		break;
     	}
-	}	
-	Menu();
+	}
+	Pay();
 }
 
 void Burgers()
@@ -271,7 +221,6 @@ void AmountBurgers(uint8 u8Type)
 		}
 		else
 		{
-			printf("Please wait until your burgers are ready\n");
 			u8Ingredients[LETTUCE] -= u8AmountLettuce;
 			u8Ingredients[TOMATO] -= u8AmountTomato;
 			u8Ingredients[MEAT] -= u8AmountMeat;
@@ -295,7 +244,6 @@ void AmountBurgers(uint8 u8Type)
 		}
 		else
 		{
-			printf("Please wait until your burgers are ready\n");
 			u8Ingredients[LETTUCE] -= u8AmountLettuce;
 			u8Ingredients[TOMATO] -= u8AmountTomato;
 			u8Ingredients[MEAT] -= u8AmountMeat;
@@ -319,7 +267,6 @@ void AmountBurgers(uint8 u8Type)
 		}
 		else
 		{
-			printf("Please wait until your burgers are ready\n");
 			u8Ingredients[LETTUCE] -= u8AmountLettuce;
 			u8Ingredients[TOMATO] -= u8AmountTomato;
 			u8Ingredients[MEAT] -= u8AmountMeat;
@@ -343,7 +290,6 @@ void AmountBurgers(uint8 u8Type)
 		}
 		else
 		{
-			printf("Please wait until your burgers are ready\n");
 			u8Ingredients[LETTUCE] -= u8AmountLettuce;
 			u8Ingredients[TOMATO] -= u8AmountTomato;
 			u8Ingredients[MEAT] -= u8AmountMeat;
@@ -540,23 +486,18 @@ void MaxOrderFries (uint8 u8Amount, uint8 u8Size)
 	stFries[enTotalFries].u32EarnMoney += u32BMoney;
 }
 
-void Check()
-{
-	printf("\n\nAt the moment you have ordered:\nBurgers:\nBig Mac %d  $%d\nCheeseburger %d  $%d\nQuarter Pounder %d  $%d\nDeluxe %d  $%d\nTotal Burgers %d  $%d\n",stBurgers[enBigMac].u8Amount , stBurgers[enBigMac].u32EarnMoney, stBurgers[enCheeseBurger].u8Amount , stBurgers[enCheeseBurger].u32EarnMoney, stBurgers[enQuarterPounder].u8Amount , stBurgers[enQuarterPounder].u32EarnMoney, stBurgers[enDeluxe].u8Amount , stBurgers[enDeluxe].u32EarnMoney, stBurgers[enTotalBurgers].u8Amount , stBurgers[enTotalBurgers].u32EarnMoney);
-	printf("\nDrinks:\nSprite %d  $%d\nCoke %d  $%d\nFanta %d  $%d\nSquirt %d  $%d\nTotal Drinks %d  $%d\n",stDrinks[enSprite].u8Amount , stDrinks[enSprite].u32EarnMoney, stDrinks[enCoke].u8Amount , stDrinks[enCoke].u32EarnMoney, stDrinks[enFanta].u8Amount , stDrinks[enFanta].u32EarnMoney, stDrinks[enSquirt].u8Amount , stDrinks[enSquirt].u32EarnMoney, stDrinks[enTotalDrinks].u8Amount , stDrinks[enTotalDrinks].u32EarnMoney);
-	printf("\nDesserts:\nCheese Cake %d  $%d\nLemon Pie %d  $%d\nIce Cream %d  $%d\nNutella Cake %d  $%d\nTotal Desserts %d  $%d\n",stDesserts[enCheeseCake].u8Amount , stDesserts[enCheeseCake].u32EarnMoney, stDesserts[enLemonPie].u8Amount , stDesserts[enLemonPie].u32EarnMoney, stDesserts[enIceCream].u8Amount , stDesserts[enIceCream].u32EarnMoney, stDesserts[enNutellaCake].u8Amount , stDesserts[enNutellaCake].u32EarnMoney, stDesserts[enTotalDesserts].u8Amount , stDesserts[enTotalDesserts].u32EarnMoney);
-	printf("\nFries:\nSmall %d  $%d\nMedium %d  $%d\nLarge %d  $%d\nExtra Large %d  $%d\nTotal Fries %d  $%d\n\n\n",stFries[enSmall].u8Amount , stFries[enSmall].u32EarnMoney, stFries[enMedium].u8Amount , stFries[enMedium].u32EarnMoney, stFries[enLarge].u8Amount , stFries[enLarge].u32EarnMoney, stFries[enExtraLarge].u8Amount , stFries[enExtraLarge].u32EarnMoney, stFries[enTotalFries].u8Amount , stFries[enTotalFries].u32EarnMoney);
-    Menu();
-}
-
-uint8 Pay()
+void Pay()
 {
 	uint32 u32Total;
 	uint32 u32Pay=0;
 	uint32 u32Change;
-	uint8 u8Payed = FACTOR;
 	uint8 u8i;
+	uint8 u8j;
 	u32Total=(stBurgers[enTotalBurgers].u32EarnMoney + stDrinks[enTotalDrinks].u32EarnMoney + stDesserts[enTotalDesserts].u32EarnMoney + stFries[enTotalFries].u32EarnMoney);
+	printf("\n\nYou have ordered:\nBurgers:\nBig Mac %d  $%d\nCheeseburger %d  $%d\nQuarter Pounder %d  $%d\nDeluxe %d  $%d\nTotal Burgers %d  $%d\n",stBurgers[enBigMac].u8Amount , stBurgers[enBigMac].u32EarnMoney, stBurgers[enCheeseBurger].u8Amount , stBurgers[enCheeseBurger].u32EarnMoney, stBurgers[enQuarterPounder].u8Amount , stBurgers[enQuarterPounder].u32EarnMoney, stBurgers[enDeluxe].u8Amount , stBurgers[enDeluxe].u32EarnMoney, stBurgers[enTotalBurgers].u8Amount , stBurgers[enTotalBurgers].u32EarnMoney);
+	printf("\nDrinks:\nSprite %d  $%d\nCoke %d  $%d\nFanta %d  $%d\nSquirt %d  $%d\nTotal Drinks %d  $%d\n",stDrinks[enSprite].u8Amount , stDrinks[enSprite].u32EarnMoney, stDrinks[enCoke].u8Amount , stDrinks[enCoke].u32EarnMoney, stDrinks[enFanta].u8Amount , stDrinks[enFanta].u32EarnMoney, stDrinks[enSquirt].u8Amount , stDrinks[enSquirt].u32EarnMoney, stDrinks[enTotalDrinks].u8Amount , stDrinks[enTotalDrinks].u32EarnMoney);
+	printf("\nDesserts:\nCheese Cake %d  $%d\nLemon Pie %d  $%d\nIce Cream %d  $%d\nNutella Cake %d  $%d\nTotal Desserts %d  $%d\n",stDesserts[enCheeseCake].u8Amount , stDesserts[enCheeseCake].u32EarnMoney, stDesserts[enLemonPie].u8Amount , stDesserts[enLemonPie].u32EarnMoney, stDesserts[enIceCream].u8Amount , stDesserts[enIceCream].u32EarnMoney, stDesserts[enNutellaCake].u8Amount , stDesserts[enNutellaCake].u32EarnMoney, stDesserts[enTotalDesserts].u8Amount , stDesserts[enTotalDesserts].u32EarnMoney);
+	printf("\nFries:\nSmall %d  $%d\nMedium %d  $%d\nLarge %d  $%d\nExtra Large %d  $%d\nTotal Fries %d  $%d\n\n\n",stFries[enSmall].u8Amount , stFries[enSmall].u32EarnMoney, stFries[enMedium].u8Amount , stFries[enMedium].u32EarnMoney, stFries[enLarge].u8Amount , stFries[enLarge].u32EarnMoney, stFries[enExtraLarge].u8Amount , stFries[enExtraLarge].u32EarnMoney, stFries[enTotalFries].u8Amount , stFries[enTotalFries].u32EarnMoney);
 	printf("Your total is $%d.\nPlease type in the total or more.\n", u32Total);
 	scanf("%d", &u32Pay);
 	while(u32Pay < u32Total)
@@ -568,11 +509,43 @@ uint8 Pay()
 	if(u32Pay> u32Total)
 	{
 		u32Change= u32Pay - u32Total;
-		printf("Your change is $%d\n",u32Change);
+		printf("Your change is $%d\nPlease wait until your order is done\n",u32Change);
 	}
 	else
 	{
 		/*Nothing to do*/
+	}
+	for(u8i=0; u8i<stBurgers[enTotalBurgers].u8Amount; u8i++)
+	{
+		printf("Making Burger\n");
+		for(u8j=0; u8j<DELAY_BURGERS; u8j++)
+		{
+			delay(FACTOR);
+		}
+	}	
+	for(u8i=0; u8i<stDrinks[enTotalDrinks].u8Amount; u8i++)
+	{
+		printf("Making Drink\n");
+		for(u8j=0; u8j<DELAY_DRINKS; u8j++)
+		{
+			delay(FACTOR);
+		}
+	}
+	for(u8i=0; u8i<stDesserts[enTotalDesserts].u8Amount; u8i++)
+	{
+		printf("Making Dessert\n");
+		for(u8j=0; u8j<DELAY_DESSERTS; u8j++)
+		{
+			delay(FACTOR);
+		}
+	}
+	for(u8i=0; u8i<stFries[enTotalFries].u8Amount; u8i++)
+	{
+		printf("Making Fries\n");
+		for(u8j=0; u8j<DELAY_FRIES; u8j++)
+		{
+			delay(FACTOR);
+		}
 	}
 	Backup();
 	for(u8i=0;u8i<=OPTION4; u8i++)
@@ -586,13 +559,7 @@ uint8 Pay()
 		stDesserts[u8i].u32EarnMoney=0;
 		stFries[u8i].u32EarnMoney=0;
 	}
-	
-	return u8Payed;
-}
-
-void Exit()
-{
-	printf("Come back soon\n");
+	printf("Enjoy your food.\nCome back soon\n");
 }
 
 void Backup()
@@ -644,53 +611,73 @@ void Backup()
 
 void Recharge(uint8 u8AmountLettuce, uint8 u8AmountMeat, uint8 u8AmountCheese, uint8 u8AmountBread, uint8 u8AmountTomato)
 {
-	uint32 u32Delay;
-	uint8 x = FACTOR; 
-	while(x == FACTOR)
+	uint8 u8x = FACTOR;
+	uint8 u8i = 0; 
+	while(u8x == FACTOR)
 	{
-
-
 		if ( u8AmountLettuce > u8Ingredients[LETTUCE]) 
 		{ 
-			printf("Llenando Lechuga");
-			u32Delay = DELAY; 
-			while(u32Delay--); 
+			printf("Recharging Lettuce\n");
+			for(u8i=0 ; u8i<DELAY_INGREDIENTS; u8i++)
+			{
+				delay(FACTOR);
+			} 
 			u8Ingredients[LETTUCE] += MAX_LETTUCE;
 
 		} 
 		else if ( u8AmountTomato > u8Ingredients[TOMATO] ) 
 		{ 
-			printf("\nLlenando Tomate"); 
-			u32Delay = DELAY; 
-			while(u32Delay--); 
+			printf("Recharging Tomato\n"); 
+			for(u8i=0 ; u8i<DELAY_INGREDIENTS; u8i++)
+			{
+				delay(FACTOR);
+			}
 			u8Ingredients[TOMATO] += MAX_TOMATO; 
 		} 
 		else if (u8AmountMeat > u8Ingredients[MEAT]) 
 		{ 
-			printf("\nLlenando Carne"); 
-			u32Delay = DELAY; 
-			while(u32Delay--); 
+			printf("Recharging Meat\n"); 
+			for(u8i=0 ; u8i<DELAY_INGREDIENTS; u8i++)
+			{
+				delay(FACTOR);
+			}
 			u8Ingredients[MEAT] += MAX_MEAT; 
 		} 
 		else if ( u8AmountBread > u8Ingredients[BREAD] ) 
 		{ 
-			printf("\nLlenando Pan"); 
-			u32Delay = DELAY; 
-			while(u32Delay--); 
+			printf("Recharging Bread\n"); 
+			for(u8i=0 ; u8i<DELAY_INGREDIENTS; u8i++)
+			{
+				delay(FACTOR);
+			}
 			u8Ingredients[BREAD] += MAX_BREAD;
 		} 
 		else if (u8AmountCheese > u8Ingredients[CHEESE]) 
 		{ 
-			printf("\nLlenando Queso\n"); 
-			u32Delay = DELAY; 
-			while(u32Delay--); 
+			printf("Recharging Cheese\n"); 
+			for(u8i=0 ; u8i<DELAY_INGREDIENTS; u8i++)
+			{
+				delay(FACTOR);
+			}
 			u8Ingredients[CHEESE] += MAX_CHEESE;
 		} 
 		else
 		{
-			x = FALSO;
+			u8x = FALSO;
 		}
 		
 	}
-	Menu();
 }
+
+void delay(uint32 number_of_seconds) 
+{ 
+    // Converting time into milli_seconds 
+    uint32 milli_seconds = 1000 * number_of_seconds; 
+  
+    // Storing start time 
+    clock_t start_time = clock(); 
+  
+    // looping till required time is not achieved 
+    while (clock() < start_time + milli_seconds) 
+        ; 
+} 
